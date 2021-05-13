@@ -6,17 +6,22 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    //重定向
     path: '/',
+    redirect: '/home'
+  },
+  {
+    path: '/home',
     name: 'Home',
     component: () => import('../views/Home.vue')
   },
   {
-    path: '/detail',
-    name: 'Detail',
+    path: '/list',
+    name: 'List',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import('../views/Detail.vue')
+    component: () => import('../views/List.vue')
   }
 ]
 

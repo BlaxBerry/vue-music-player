@@ -1,14 +1,31 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
+    <!-- <router-link to="/about">About</router-link> -->
 
-    <router-view/>
+    <!-- Left Nav Bar -->
+    <LeftNavBar />
+    <!-- Top Nav -->
+    <TopNavBar />
+    <!--router-view -->
+    <router-view />
   </div>
 </template>
+<script>
+//Top Nav Bar
+import TopNavBar from "@/components/TopNavBar/TopNavBar.vue";
+// Left Nav Bar
+import LeftNavBar from "@/components/LeftNavBar/LeftNavBar.vue";
+
+export default {
+  name: "Home",
+  components: {
+    TopNavBar,
+    LeftNavBar,
+  },
+};
+</script>
 
 <style lang="less">
-@import './assets/style/main.less';
+@import "./assets/style/base.less";
+@import "./assets/style/App/App.less";
 </style>
