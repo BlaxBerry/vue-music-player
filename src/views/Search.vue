@@ -1,6 +1,6 @@
 <template>
-  <div id="list">
-      loist1111
+  <div id="search">
+      search1111
   </div>
 </template>
 
@@ -11,5 +11,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import "../assets/style/List/List.less";
+@import "../assets/style/Search/Search.less";
 </style>
