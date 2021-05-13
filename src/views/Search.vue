@@ -13,6 +13,10 @@
     <!-- new song -->
     <Card :list="newSongList"></Card>
 
+    <!-- PLay Bar -->
+    <!-- <PlayBar></PlayBar> -->
+    <audio :src="playURL" autoplay controls style="width: 100%; margin-top:1rem"></audio>
+
     <!--result list -->
     <!-- <el-table class="result_list" :data="tableData" style="width: 100%">
       <el-table-column prop="index" width="40"> </el-table-column>
@@ -29,13 +33,14 @@
 <script>
 // Card
 import Card from "@/components/Card/Card.vue";
+// Play Bar
+import PlayBar from "@/components/PlayBar/PlayBar.vue";
 
 // API
 import {
   // new songs
-  GetnewSong
+  GetnewSong,
 } from "@/network/api.js";
-
 
 export default {
   data() {
@@ -44,8 +49,7 @@ export default {
       inputVal: "",
 
       // new song list
-      newSongList:[],
-
+      newSongList: [],
 
       // result list
       tableData: [
@@ -70,18 +74,22 @@ export default {
           author: "Eminem",
         },
       ],
+
+      //testURL
+      playURL:''
     };
   },
-  components:{
-    Card
+  components: {
+    Card,
+    PlayBar,
   },
-  mounted(){
+  mounted() {
     // get new Songs
-    GetnewSong().then(res=>{
+    GetnewSong().then((res) => {
       // console.log(res.result);
       this.newSongList = res.result;
-    })
-  }
+    });
+  },
 };
 </script>
 

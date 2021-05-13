@@ -1,0 +1,40 @@
+.block {
+  // background-color: green;
+  position: fixed;
+  bottom: 0;
+  z-index: 5;
+  width: 100%;
+  padding: 0 1rem;
+
+  // 歌词
+  .lyric {
+    background-color: red;
+  }
+
+  //
+  .player {
+    display: flex;
+    position: relative;
+    .btns {
+      display: flex;
+      position: absolute;
+      z-index: 2;
+
+      /deep/i::before {
+        font-size: 3rem;
+        text-align: center;
+        line-height: 4rem;
+      }
+      .btn {
+        background-color: honeydew;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+      }
+    }
+    .el-slider {
+      flex: 1;
+      margin-left: 12rem + 2rem;
+    }
+  }
+}

@@ -5,7 +5,7 @@
     home
 
     <!-- card List -->
-      <Card :list="recommendList" v-if="swipeList.length > 0"/>
+    <Card :list="recommendList" v-if="swipeList.length > 0"/>
   </div>
 </template>
 
@@ -47,7 +47,7 @@ export default {
 
     // 推荐歌单
     GetRecommendList().then((res) => {
-      console.log(res.result);
+      // console.log(res.result);
       this.recommendList = res.result;
     });
   },

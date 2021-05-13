@@ -31,3 +31,13 @@ export const GetRecommendList = () => instance.get('/personalized')
 
 // new song
 export const GetnewSong = () => instance.get('/personalized/newsong')
+
+// play 播放
+// id
+export const GetPlaySongUrl = (id) => instance({
+    url:'/song/url',
+    method:'get',
+    params:{
+        id:id
+    }
+})
