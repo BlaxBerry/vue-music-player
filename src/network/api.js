@@ -41,3 +41,6 @@ export const GetPlaySongUrl = (id) => instance({
         id:id
     }
 })
+
+// MV
+export const GetRecommendMV = () => instance.get('/personalized/mv');

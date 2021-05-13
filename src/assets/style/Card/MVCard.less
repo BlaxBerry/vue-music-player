@@ -1,0 +1,30 @@
+#mv_card {
+    display: flex;
+    flex-wrap: wrap;
+
+    .card {
+        img {
+            width: 100%;
+        }
+        span {
+            color: #999;
+        }
+    }
+}
+
+// Mobie
+@media screen and (max-width: 7490px) {
+    .card {
+      width: 48%;
+      margin: 0.25rem;
+    }
+  }
+  //PC
+  @media screen and (min-width: 750px) {
+    .card {
+      width: 23%;
+      margin: 0.5rem;
+    }
+  }
+
+
