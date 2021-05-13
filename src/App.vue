@@ -28,4 +28,7 @@ export default {
 <style lang="less">
 @import "./assets/style/base.less";
 @import "./assets/style/App/App.less";
+// body {
+//   background-color: black;
+// }
 </style>

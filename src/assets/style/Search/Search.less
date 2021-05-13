@@ -1,5 +1,35 @@
 #search {
-    padding-top: 1rem;
-    padding-left: 7rem + 2rem;
-    padding-right: 1rem;
+  padding-top: 1rem;
+  padding-left: 7rem + 2rem;
+  padding-right: 1rem;
+
+  // Top Search Box
+  .inputBox {
+    p {
+      margin: 1rem 0 2rem;
+      font-size: 1rem;
+    }
+  }
+
+  // Result List
+  /deep/.el-table th > .cell {
+    color: red;
+    font-weight: 700;
+  }
+  /deep/.el-table__row td {
+    // index
+    &:nth-child(1) {
+    //   padding-left: 1rem;
+      color: red;
+      font-weight: 700;
+    }
+    // name
+    //   &:nth-child(2) {
+    //   }
+    // author
+    // &:nth-child(3) {
+    //   padding-right: 1rem;
+    //   text-align: right;
+    // }
+  }
 }
