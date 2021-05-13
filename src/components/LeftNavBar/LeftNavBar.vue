@@ -1,10 +1,6 @@
 <template>
   <!-- LeftNavBar -->
   <div id="left_nav_bar">
-    <el-radio-group v-model="isCollapse">
-      <el-radio-button :label="false">展开</el-radio-button>
-      <el-radio-button :label="true">收起</el-radio-button>
-    </el-radio-group>
     <el-menu
       default-active="1-4-1"
       class="el-menu-vertical-demo"
@@ -13,25 +9,11 @@
       :collapse="isCollapse"
       router
     >
-      <el-submenu index="1">
-        <!-- list -->
-        <template slot="title">
-          <i class="el-icon-menu"></i>
-          <span slot="title">导航一</span>
-        </template>
-        <el-menu-item-group>
-          <span slot="title">音乐分类</span>
-          <el-menu-item index="/list">选项1</el-menu-item>
-          <el-menu-item index="/list">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="/list">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="/list">
-          <span slot="title">选项4</span>
-          <el-menu-item index="/list">选项1</el-menu-item>
-        </el-submenu>
-      </el-submenu>
+      <!-- List-->
+      <el-menu-item index="/list">
+        <i class="el-icon-menu"></i>
+        <span slot="title">列表</span>
+      </el-menu-item>
       <!-- search -->
       <el-menu-item index="/search">
         <i class="el-icon-search"></i>

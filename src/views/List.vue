@@ -1,13 +1,21 @@
 <template>
+<!-- List -->
   <div id="list">
-      loist1111
+
   </div>
 </template>
 
 <script>
-export default {
-
-}
+  export default {
+    data() {
+      return {
+      
+      };
+    },
+    methods: {
+     
+    }
+  };
 </script>
 
 <style lang="less" scoped>
