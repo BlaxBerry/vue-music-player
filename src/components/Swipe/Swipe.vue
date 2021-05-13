@@ -1,20 +1,28 @@
 <template>
   <div id="swiper">
-    <el-carousel indicator-position="outside" type="" class="swipe_normal">
-      <el-carousel-item v-for="item in 4" :key="item">
-        <h3>{{ item }}</h3>
+      <el-carousel indicator-position="outside" type="" class="swipe_normal" >
+      <el-carousel-item v-for="item,index in swipeList" :key="index">
+        <img :src="item.imageUrl" alt="">
       </el-carousel-item>
     </el-carousel>
     <el-carousel indicator-position="outside" type="card" class="swipe_card">
-      <el-carousel-item v-for="item in 4" :key="item">
-        <h3>{{ item }}</h3>
+      <el-carousel-item v-for="item,index in swipeList" :key="index">
+        <img :src="item.imageUrl" alt="">
       </el-carousel-item>
     </el-carousel>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props:["swipeList"],
+  data(){
+    return {}
+  },
+  created(){
+    console.log(this.swipeList);
+  }
+};
 </script>
 
 <style lang="less" scoped>

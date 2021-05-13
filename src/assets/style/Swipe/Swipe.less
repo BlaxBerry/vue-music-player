@@ -1,21 +1,29 @@
-.el-carousel__item h3 {
-  color: #475669;
-  font-size: 18px;
-  opacity: 0.75;
-  margin: 0;
-}
-
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
-
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
-}
-
 // Media Query
+//iPad
+@media screen and (max-width: 1099px) {
+    // swipe type
+    .swipe_normal {
+      display: block;
+    }
+    .swipe_card {
+      display: none;
+    }
+    /deep/.el-carousel__container {
+      height: 250px;
+    }
+    /deep/.el-carousel__indicators {
+
+      height: 0px;
+    }
+    /deep/.swipe_normal.el-carousel.el-carousel--horizontal {
+      height: 400px;
+    }
+    img {
+      width: 100%;
+    }
+}
 // Mobile
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 750px) {
   // swipe type
   .swipe_normal {
     display: block;
@@ -23,21 +31,36 @@
   .swipe_card {
     display: none;
   }
-  .el-carousel {
-    height: 100px;
+  /deep/.el-carousel__container {
+    height: 120px;
   }
-  .el-carousel__item.is-active.is-animating {
-    height: 100px;
+  /deep/.el-carousel__indicators {
+
+    height: 0px;
+  }
+  /deep/.swipe_normal.el-carousel.el-carousel--horizontal {
+    height: 120px;
+  }
+  img {
+    width: 100%;
   }
 }
-
 // PC
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 900px) {
   // swipe type
   .swipe_normal {
     display: none;
   }
   .swipe_card {
     display: block;
+  }
+  /deep/.swipe_normal.el-carousel.el-carousel--horizontal {
+    height: 250px;
+  }
+  .el-carousel__item {
+    top: 15%;
+  }
+  img {
+    width: 100%;
   }
 }

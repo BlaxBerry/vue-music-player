@@ -1,0 +1,29 @@
+import Vue from 'vue'
+import router from '../router/index'
+import axios from 'axios'
+
+const instance = axios.create({
+    baseURL: 'https://autumnfish.cn',
+    timeout: 5000
+})
+
+// request interceptors
+instance.interceptors.request.use(config => {
+    return config
+}, err => {
+    return Promise.reject(err)
+})
+// response interceptors
+instance.interceptors.response.use(res => {
+    return (res.data?res.data:res)
+},err=>{
+    console.log('响应error');
+})
+
+
+
+// Swipe 轮播
+// autumnfish.cn/banner
+export const GetSwipe = () => instance.get('/banner')
+
+// recommend list

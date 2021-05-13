@@ -24,6 +24,11 @@
         <i class="el-icon-document"></i>
         <span slot="title">导航三</span>
       </el-menu-item>
+      <!-- Home-->
+      <el-menu-item index="/home">
+        <i class="el-icon-s-home"></i>
+        <span slot="title">主页</span>
+      </el-menu-item>
       <!-- setting -->
       <el-menu-item index="">
         <i class="el-icon-setting"></i>
