@@ -42,5 +42,17 @@ export const GetPlaySongUrl = (id) => instance({
     }
 })
 
-// MV
+// 推荐MV
 export const GetRecommendMV = () => instance.get('/personalized/mv');
+
+
+// 精品歌单
+// cat 分类标签
+// limit 数量
+export const GetHighQualitySong = (limit) => instance({
+    url:'/top/playlist/highquality',
+    method:'get',
+    params:{
+        limit:1
+    }
+});
