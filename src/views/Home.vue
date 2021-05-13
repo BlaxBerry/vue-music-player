@@ -1,8 +1,11 @@
 <template>
   <div id="home">
     <!-- <Swipe :swipeList="swipeList"></Swipe> -->
-  <Swipe :swipeList="swipeList" v-if="swipeList.length>0"></Swipe>
+    <Swipe :swipeList="swipeList" v-if="swipeList.length > 0"></Swipe>
     home
+
+    <!-- card List -->
+      <Card :list="recommendList" v-if="swipeList.length > 0"/>
   </div>
 </template>
 
@@ -10,29 +13,44 @@
 // @ is an alias to /src
 //Top Nav Bar
 import Swipe from "@/components/Swipe/Swipe.vue";
+// Card
+import Card from "@/components/Card/Card.vue";
 
 // API
-import {GetSwipe}from '@/network/api.js'
+import {
+  // 轮播
+  GetSwipe,
+  // 推荐歌单
+  GetRecommendList,
+} from "@/network/api.js";
 
 export default {
   name: "Home",
-  data(){
+  data() {
     return {
       // Swipe 轮播
-      swipeList:[]
-    }
+      swipeList: [],
+      // 推荐歌单
+      recommendList: [],
+    };
   },
   components: {
     Swipe,
+    Card,
   },
-  created(){
+  created() {
     // get Swipe Pics
-    GetSwipe().then(res=>{
-      console.log(res.banners);
+    GetSwipe().then((res) => {
+      // console.log(res.banners);
       this.swipeList = res.banners;
+    });
 
-    })
-  }
+    // 推荐歌单
+    GetRecommendList().then((res) => {
+      console.log(res.result);
+      this.recommendList = res.result;
+    });
+  },
 };
 </script>
 

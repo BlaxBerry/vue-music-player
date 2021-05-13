@@ -26,4 +26,5 @@ instance.interceptors.response.use(res => {
 // autumnfish.cn/banner
 export const GetSwipe = () => instance.get('/banner')
 
-// recommend list
+// recommend list 推荐
+export const GetRecommendList = () => instance.get('/personalized')

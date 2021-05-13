@@ -20,7 +20,7 @@ export default {
     return {}
   },
   created(){
-    console.log(this.swipeList);
+    // console.log(this.swipeList);
   }
 };
 </script>
