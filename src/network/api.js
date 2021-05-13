@@ -28,3 +28,6 @@ export const GetSwipe = () => instance.get('/banner')
 
 // recommend list 推荐
 export const GetRecommendList = () => instance.get('/personalized')
+
+// new song
+export const GetnewSong = () => instance.get('/personalized/newsong')

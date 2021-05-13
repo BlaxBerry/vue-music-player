@@ -9,8 +9,12 @@
         请支持购买正版音乐
       </p>
     </div>
+
+    <!-- new song -->
+    <Card :list="newSongList"></Card>
+
     <!--result list -->
-    <el-table class="result_list" :data="tableData" style="width: 100%">
+    <!-- <el-table class="result_list" :data="tableData" style="width: 100%">
       <el-table-column prop="index" width="40"> </el-table-column>
       <el-table-column prop="name" label="Title"> </el-table-column>
       <el-table-column
@@ -18,16 +22,31 @@
         label="Author"
         width="100"
       ></el-table-column>
-    </el-table>
+    </el-table> -->
   </div>
 </template>
 
 <script>
+// Card
+import Card from "@/components/Card/Card.vue";
+
+// API
+import {
+  // new songs
+  GetnewSong
+} from "@/network/api.js";
+
+
 export default {
   data() {
     return {
       // searchValue
       inputVal: "",
+
+      // new song list
+      newSongList:[],
+
+
       // result list
       tableData: [
         {
@@ -53,6 +72,16 @@ export default {
       ],
     };
   },
+  components:{
+    Card
+  },
+  mounted(){
+    // get new Songs
+    GetnewSong().then(res=>{
+      // console.log(res.result);
+      this.newSongList = res.result;
+    })
+  }
 };
 </script>
 
