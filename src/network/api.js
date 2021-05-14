@@ -53,7 +53,7 @@ export const GetHighQualitySong = (params) => instance.get('/top/playlist/highqu
 
 // 歌单列表
 // limit: 单页显示数量
-// offset分页
+// offset分页 （页数-1）*limit
 // cat分类标签
 export const GetList = (params) => instance.get('/top/playlist/highquality', {params});
 

@@ -25,6 +25,17 @@
     <!-- list -->
     <Card :list="list" v-if="list.length > 0"></Card>
 
+    <!-- page -->
+    <el-pagination
+      layout="prev, pager, next"
+      :page-size="10"
+      :pager-count="5"
+      :total="totalPage"
+      :current-page="currentPage"
+      @current-change="handleCurrentChange"
+    >
+    </el-pagination>
+
     <!-- PLay Bar -->
     <!-- <PlayBar></PlayBar> -->
     <!-- <audio :src="playURL" autoplay controls></audio> -->
@@ -61,6 +72,15 @@ export default {
       tags: ["欧美", "ACG", "电子", "轻音乐", "说唱", "全部"],
       // 选中的tag
       tagSelected: "欧美",
+
+      // 页数
+      // 总页数
+      totalPage: 0,
+      // 当前页数
+      currentPage: 1,
+      // 点击的页码
+      selectPage:'',
+
       // 播放URL
       playURL: "",
     };
@@ -72,12 +92,13 @@ export default {
 
   created() {
     // 初始化
-    this.init(this.tagSelected);
+    this.init(this.tagSelected, this.currentPage);
   },
 
   methods: {
     // 获取歌单列表 + 顶部精品歌单
-    init(cat) {
+    init(cat, page) {
+
       // 获取顶部精品歌单卡片
       GetHighQualitySong({
         limit: 1,
@@ -90,12 +111,13 @@ export default {
       // 获取列表
       GetList({
         limit: 10,
-        offset: 0,
+        offset: (page - 1) * 10,
         cat: cat,
       }).then((res) => {
-        // console.log(res);
+        console.log(res);
         // console.log(res.playlists);
         this.list = res.playlists;
+        this.totalPage = res.total;
       });
     },
 
@@ -104,7 +126,15 @@ export default {
       this.tagSelected = item;
       // console.log(item);
       // 调用函数
-      this.init(item);
+      this.init(this.tagSelected, this.currentPage);
+    },
+
+    // 切换页面 page页码
+    handleCurrentChange(page) {
+      // console.log(page);
+      this.selectPage = page;
+      // 调用函数
+      this.init(this.tagSelected, this.selectPage);
     },
   },
 };
@@ -112,6 +142,9 @@ export default {
 
 <style lang="less" scoped>
 @import "../assets/style/List/List.less";
+.el-pagination {
+  width: 100%;
+}
 audio {
   width: 100%;
 }
