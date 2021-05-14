@@ -1,6 +1,6 @@
 # vue-music-player
 
-## Project setup
+### Project setup
 ```
 npm install
 ```
@@ -10,10 +10,20 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Home
+![](./src/assets/images/Home.png
+)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+--- 
+
+### Category
+![](./src/assets/images/Category.png
+)
+
+--- 
+
+### Search
+![](./src/assets/images/Search.png
+)
+
+--- 

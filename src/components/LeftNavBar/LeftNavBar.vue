@@ -9,26 +9,42 @@
       :collapse="isCollapse"
       router
     >
-      <!-- List-->
-      <el-menu-item index="/list">
+      <!-- Catergory-->
+      <el-menu-item index="/category">
         <i class="el-icon-menu"></i>
-        <span slot="title">列表</span>
+        <span slot="title">分类</span>
       </el-menu-item>
+
       <!-- search -->
       <el-menu-item index="/search">
         <i class="el-icon-search"></i>
         <span slot="title">搜索</span>
       </el-menu-item>
-      <!-- ？ -->
-      <el-menu-item index="3" disabled>
-        <i class="el-icon-document"></i>
-        <span slot="title">导航三</span>
+
+      <!-- List-->
+      <el-menu-item index="/list">
+        <i class="el-icon-tickets"></i>
+        <span slot="title">歌单</span>
       </el-menu-item>
+
+      <!-- MV -->
+      <el-menu-item index="3" disabled>
+        <i class="el-icon-film"></i>
+        <span slot="title">MV</span>
+      </el-menu-item>
+
       <!-- Home-->
       <el-menu-item index="/home">
         <i class="el-icon-s-home"></i>
         <span slot="title">主页</span>
       </el-menu-item>
+
+      <!-- ？ -->
+      <el-menu-item index="3" disabled>
+        <i class="el-icon-lock"></i>
+        <span slot="title">开发中</span>
+      </el-menu-item>
+
       <!-- setting -->
       <el-menu-item index="">
         <i class="el-icon-setting"></i>

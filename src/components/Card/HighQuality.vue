@@ -25,5 +25,5 @@ props:['hightQuality']
 </script>
 
 <style lang="less" scoped>
-@import "../../assets/style/List/HighQuality.less";
+@import "../../assets/style/Category/HighQuality.less";
 </style>
