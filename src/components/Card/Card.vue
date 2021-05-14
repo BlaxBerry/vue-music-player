@@ -2,7 +2,7 @@
   <!-- Card -->
   <div id="card">
     <el-card class="card" v-for="item in list" :key="item.id">
-      <img :src="item.picUrl" class="image" @click="clickToPlay(item.id)" />
+      <img :src="item.picUrl?item.picUrl:item.coverImgUrl" class="image" @click="clickToPlay(item.id)" />
       <div>
         <!-- 专辑名 / 新歌卡片 歌曲名 -->
         <span>{{ item.name }}</span>

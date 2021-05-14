@@ -15,8 +15,8 @@ instance.interceptors.request.use(config => {
 })
 // response interceptors
 instance.interceptors.response.use(res => {
-    return (res.data?res.data:res)
-},err=>{
+    return (res.data ? res.data : res)
+}, err => {
     console.log('响应error');
 })
 
@@ -35,10 +35,10 @@ export const GetnewSong = () => instance.get('/personalized/newsong')
 // play 播放
 // id
 export const GetPlaySongUrl = (id) => instance({
-    url:'/song/url',
-    method:'get',
-    params:{
-        id:id
+    url: '/song/url',
+    method: 'get',
+    params: {
+        id: id
     }
 })
 
@@ -49,10 +49,11 @@ export const GetRecommendMV = () => instance.get('/personalized/mv');
 // 精品歌单
 // cat 分类标签
 // limit 数量
-export const GetHighQualitySong = (limit) => instance({
-    url:'/top/playlist/highquality',
-    method:'get',
-    params:{
-        limit:1
-    }
-});
+export const GetHighQualitySong = (params) => instance.get('/top/playlist/highquality', { params });
+
+// 歌单列表
+// limit: 单页显示数量
+// offset分页
+// cat分类标签
+export const GetList = (params) => instance.get('/top/playlist/highquality', {params});
+
