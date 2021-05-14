@@ -16,12 +16,14 @@
           {{ item }}
         </li>
       </ul>
+
       <!-- empty -->
       <div class="empty" v-if="list.length == 0">
         <i class="el-icon-loading"></i>
         暂时为空，尝试刷新页面
       </div>
     </div>
+    
     <!-- list -->
     <Card :list="list" v-if="list.length > 0"></Card>
 
@@ -55,7 +57,7 @@ import {
   // 精品歌单卡片
   GetHighQualitySong,
   // 歌单列表
-  GetList,
+  GetCatrgoryList,
 } from "@/network/api.js";
 
 export default {
@@ -109,7 +111,7 @@ export default {
       });
 
       // 获取列表
-      GetList({
+      GetCatrgoryList({
         limit: 10,
         offset: (page - 1) * 10,
         cat: cat,

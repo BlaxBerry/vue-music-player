@@ -46,14 +46,22 @@ export const GetPlaySongUrl = (id) => instance({
 export const GetRecommendMV = () => instance.get('/personalized/mv');
 
 
-// 精品歌单
+// 分类精品歌单
 // cat 分类标签
 // limit 数量
 export const GetHighQualitySong = (params) => instance.get('/top/playlist/highquality', { params });
 
-// 歌单列表
+// 分类歌单列表
 // limit: 单页显示数量
 // offset分页 （页数-1）*limit
 // cat分类标签
-export const GetList = (params) => instance.get('/top/playlist/highquality', {params});
+export const GetCatrgoryList = (params) => instance.get('/top/playlist/highquality', {params});
 
+// list 歌曲列表
+// type 地区id
+// 全部:0
+// 话语：7
+// 欧美：96
+// 日本：8
+// 韩国：16
+export const GetList= (params) => instance.get('/top/song',{params});

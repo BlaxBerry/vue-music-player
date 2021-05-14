@@ -1,0 +1,95 @@
+.card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  border-radius: 1rem;
+  &:hover {
+    background-color: grey;
+    color: honeydew;
+  }
+
+  .pic {
+    height: 5rem;
+    width: 5rem;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    img {
+      width: 100%;
+    }
+  }
+  .content {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+
+    .author {
+      flex: 1;
+      padding-right: 1rem;
+    }
+    .name {
+      flex: 1;
+      text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+  }
+}
+
+// Mobie
+@media screen and (max-width: 7490px) {
+  .card {
+    height: 5rem;
+    .index {
+      width: 3rem;
+    }
+    .pic {
+      height: 5rem;
+      width: 5rem;
+    }
+    .name {
+      padding-left: 0.5rem;
+    }
+    .author {
+      text-align: right;
+    }
+    .time {
+      width: 5rem;
+    }
+    // 公司
+    .company {
+      display: none;
+    }
+  }
+}
+//PC
+@media screen and (min-width: 750px) {
+  .card {
+    height: 10rem;
+    .index {
+      width: 5rem;
+    }
+    .pic {
+      height: 10rem;
+      width: 10rem;
+    }
+    .name {
+      padding-left: 2rem;
+    }
+    .author {
+      text-align: center;
+    }
+    .time {
+      width: 8rem;
+    }
+    // 公司
+    .company {
+      display: block;
+    }
+  }
+}
