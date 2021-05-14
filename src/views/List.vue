@@ -1,7 +1,12 @@
 <template>
   <!-- list -->
   <div id="list">
-    <audio :src="playURL" autoplay controls></audio>
+    <audio
+      :src="playURL"
+      autoplay
+      controls
+      style="width:100%; position:fixed; bottom:1rem; left:0; z-index: 9; "
+    ></audio>
 
     <!-- tags -->
     <div class="tags">
@@ -9,28 +14,20 @@
         <li
           v-for="(item, index) in tags"
           :key="index"
-          :class="tagSelected == item ? 'active ' : ''"
+          :class="tagSelected == item ? 'active' : ''"
           @click="clickTag(item)"
         >
           {{ item }}
         </li>
       </ul>
+      <!-- list card -->
+      <ListCard :list="list" v-if="list.length > 0" />
 
       <!-- empty -->
       <div class="empty" v-if="list.length == 0">
         <i class="el-icon-loading"></i>
         暂时为空，尝试刷新页面
       </div>
-    </div>
-
-    <!-- list card -->
-    <ListCard :list="list" v-if="list.length > 0" />
-
-    <!-- empty -->
-    <!-- empty -->
-    <div class="empty" v-if="list.length == 0">
-      <i class="el-icon-loading"></i>
-      暂时为空，尝试刷新页面
     </div>
   </div>
 </template>
@@ -54,20 +51,49 @@ export default {
       playURL: "",
 
       // tags
-      tags:["欧美","日本","韩国","全部"]
+      tags: ["欧美", "日本", "韩国", "全部"],
+      // 选中的 tag
+      tagSelected: "欧美",
     };
   },
   components: {
     ListCard,
   },
   created() {
+    // 初始化
+    // 显示欧美list
+    this.init(96);
+  },
+  methods: {
     // 获取列表
-    GetList({
-      type: 96,
-    }).then((res) => {
-      // console.log(res.data);
-      this.list = res.data;
-    });
+    init(type) {
+      GetList({
+        type: type,
+      }).then((res) => {
+        // console.log(res.data);
+        this.list = res.data;
+      });
+    },
+
+    // 点击Tag标签
+    clickTag(item) {
+      // console.log(this.tagSelected);
+      this.tagSelected = item;
+      let type;
+      if (item == "欧美") {
+        type = 96;
+      } else if (item == "日本") {
+        type = 8;
+      } else if (item == "韩国") {
+        type = 16;
+      } else {
+        type = 0;
+      }
+      // 调用函数
+      this.init(type);
+    },
+
+    //点击获得 play URL
   },
 };
 </script>

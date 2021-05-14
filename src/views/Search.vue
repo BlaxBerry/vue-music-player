@@ -15,18 +15,12 @@
 
     <!-- PLay Bar -->
     <!-- <PlayBar></PlayBar> -->
-    <audio :src="playURL" autoplay controls style="width: 100%; margin-top:1rem"></audio>
-
-    <!--result list -->
-    <!-- <el-table class="result_list" :data="tableData" style="width: 100%">
-      <el-table-column prop="index" width="40"> </el-table-column>
-      <el-table-column prop="name" label="Title"> </el-table-column>
-      <el-table-column
-        prop="author"
-        label="Author"
-        width="100"
-      ></el-table-column>
-    </el-table> -->
+    <audio
+      :src="playURL"
+      autoplay
+      controls
+      style="width:100%; position:fixed; bottom:1rem; left:0; z-index: 9; "
+    ></audio>
   </div>
 </template>
 
@@ -76,7 +70,7 @@ export default {
       ],
 
       //testURL
-      playURL:''
+      playURL: "",
     };
   },
   components: {

@@ -22,6 +22,11 @@
 </template>
 
 <script>
+import {
+  // play URL
+  GetPlaySongUrl,
+} from "@/network/api.js";
+
 export default {
   props: ["list"],
   // time filter
@@ -37,17 +42,23 @@ export default {
     },
   },
   methods: {
-    // click to paly
+    // // click to paly
     clickToPlay(item) {
-      // 点击获取 play URL
-      // console.log(item);
-      // console.log(item.mp3Url);
-      this.$parent.playURL = item.mp3Url;
-      // 提示版权
-      this.$message({
-        showClose: true,
-        message: "请支持购买正版音乐",
-        type: "warning",
+      //   // 点击获取 play URL
+      //   // console.log(item);
+      //   // console.log(item.mp3Url);
+      //
+      //  
+
+      GetPlaySongUrl(item.id).then((res) => {
+        // console.log(res.data[0].url);
+        this.$parent.playURL = res.data[0].url;
+        //  提示版权
+        this.$message({
+          showClose: true,
+          message: "本项目仅共个人学习，请勿擅自传播，请支持购买正版音乐",
+          type: "warning",
+        });
       });
     },
   },
