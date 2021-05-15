@@ -1,26 +1,45 @@
 <template>
   <div id="home">
     <!-- Home -->
-    <Swipe :swipeList="swipeList" v-if="swipeList.length > 0"></Swipe>
-    <!-- empty -->
-    <Empty v-if="swipeList.length == 0"></Empty>
+    <div class="swper box">
+      <Swipe :swipeList="swipeList" v-if="swipeList.length > 0"></Swipe>
+      <!-- empty -->
+      <Empty v-if="swipeList.length == 0"></Empty>
+    </div>
+
+    <!-- new song -->
+    <div class="new_songs box">
+      <h2>New Songs</h2>
+      <Card :list="newSongList" v-if="newSongList.length > 0"></Card>
+      <!-- empty -->
+      <Empty v-if="newSongList.length == 0"></Empty>
+    </div>
 
     <!-- Recommend MV  -->
-    <div class="recommend_mv">
+    <div class="recommend_mv box">
       <h2>Recommend MV</h2>
-      <MVCard :list="recommendMVList" v-if="recommendMVList.length>0"></MVCard>
+      <MVCard
+        :list="recommendMVList"
+        v-if="recommendMVList.length > 0"
+      ></MVCard>
     </div>
     <!-- empty -->
     <Empty v-if="recommendMVList.length == 0"></Empty>
 
     <!-- card List -->
-    <div class="recommend_music">
+    <div class="recommend_music box">
       <h2>Recommend Music</h2>
-      <Card :list="recommendList"  />
+      <Card :list="recommendList" />
     </div>
     <!-- empty -->
     <Empty v-if="recommendList.length == 0"></Empty>
-  
+
+    <audio
+      :src="playURL"
+      autoplay
+      controls
+      style="width:100%; position:fixed; bottom:0; left:0; z-index: 9; "
+    ></audio>
   </div>
 </template>
 
@@ -43,6 +62,8 @@ import {
   GetRecommendList,
   // 推荐MV
   GetRecommendMV,
+  // new songs
+  GetnewSong,
 } from "@/network/api.js";
 
 export default {
@@ -55,6 +76,11 @@ export default {
       recommendList: [],
       // 推荐MV
       recommendMVList: [],
+      // new song list
+      newSongList: [],
+
+      // play URL
+      playURL: "",
     };
   },
   components: {
@@ -68,6 +94,12 @@ export default {
     GetSwipe().then((res) => {
       // console.log(res.banners);
       this.swipeList = res.banners;
+    });
+
+    // get new Songs
+    GetnewSong().then((res) => {
+      console.log(res.result);
+      this.newSongList = res.result;
     });
 
     // 推荐歌单
@@ -92,10 +124,11 @@ export default {
   padding-right: 1rem;
 
   h2 {
+    font-size: 2rem;
     margin-bottom: 1rem;
   }
 
-  .recommend_mv {
+  .box {
     margin-bottom: 5rem;
   }
 }

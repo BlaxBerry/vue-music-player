@@ -1,27 +1,33 @@
 <template>
   <div id="swiper">
-      <el-carousel indicator-position="outside" type="" class="swipe_normal" >
-      <el-carousel-item v-for="item,index in swipeList" :key="index">
-        <img :src="item.imageUrl" alt="">
-      </el-carousel-item>
-    </el-carousel>
-    <el-carousel indicator-position="outside" type="card" class="swipe_card">
-      <el-carousel-item v-for="item,index in swipeList" :key="index">
-        <img :src="item.imageUrl" alt="">
-      </el-carousel-item>
-    </el-carousel>
+
+<div class="pc_swipe">
+    <el-carousel :interval="4000" type="card" height="200px">
+    <el-carousel-item v-for="item in swipeList" :key="item.id">
+      <img :src="item.imageUrl" alt="" />
+    </el-carousel-item>
+  </el-carousel>
+</div>
+
+<div class="mobile_swipe">
+    <el-carousel :interval="4000" height="200px" indicator-position="none">
+    <el-carousel-item v-for="item in swipeList" :key="item.id">
+      <img :src="item.imageUrl" alt="" />
+    </el-carousel-item>
+  </el-carousel>
+</div>
   </div>
 </template>
 
 <script>
 export default {
-  props:["swipeList"],
-  data(){
-    return {}
+  props: ["swipeList"],
+  data() {
+    return {};
   },
-  created(){
+  created() {
     // console.log(this.swipeList);
-  }
+  },
 };
 </script>
 

@@ -10,8 +10,7 @@
       </p>
     </div>
 
-    <!-- new song -->
-    <Card :list="newSongList"></Card>
+
 
     <!-- PLay Bar -->
     <!-- <PlayBar></PlayBar> -->
@@ -32,8 +31,7 @@ import PlayBar from "@/components/PlayBar/PlayBar.vue";
 
 // API
 import {
-  // new songs
-  GetnewSong,
+
 } from "@/network/api.js";
 
 export default {
@@ -41,9 +39,6 @@ export default {
     return {
       // searchValue
       inputVal: "",
-
-      // new song list
-      newSongList: [],
 
       // result list
       tableData: [
@@ -76,13 +71,6 @@ export default {
   components: {
     Card,
     PlayBar,
-  },
-  mounted() {
-    // get new Songs
-    GetnewSong().then((res) => {
-      // console.log(res.result);
-      this.newSongList = res.result;
-    });
   },
 };
 </script>

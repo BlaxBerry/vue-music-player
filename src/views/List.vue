@@ -5,7 +5,7 @@
       :src="playURL"
       autoplay
       controls
-      style="width:100%; position:fixed; bottom:1rem; left:0; z-index: 9; "
+      style="width:100%; position:fixed; bottom:0; left:0; z-index: 9; "
     ></audio>
 
     <!-- tags -->
@@ -23,8 +23,8 @@
       <!-- list card -->
       <ListCard :list="list" v-if="list.length > 0" />
 
-    <!-- empty -->
-    <Empty v-if="list.length == 0"></Empty>
+      <!-- empty -->
+      <Empty v-if="list.length == 0"></Empty>
     </div>
   </div>
 </template>
@@ -57,7 +57,7 @@ export default {
   },
   components: {
     ListCard,
-    Empty
+    Empty,
   },
   created() {
     // 初始化

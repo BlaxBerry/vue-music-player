@@ -1,30 +1,24 @@
 <template>
   <!-- Card -->
   <div id="card">
-    <el-card class="card" v-for="item in list" :key="item.id">
-      <img
-        :src="item.picUrl ? item.picUrl : item.coverImgUrl"
-        class="image"
-        @click="clickToPlay(item.id)"
-        v-if="item.picUrl || item.coverImgUrl"
-      />
-      <div>
-        <!-- 专辑名 / 新歌卡片 歌曲名 -->
-        <span>{{ item.name }}</span>
-        <!-- 专辑评价  -->
+    <div
+      class="card"
+      v-for="item,index in list"
+      :key="item.id"
+      @click="clickToPlay(item.id,index)"
+    >
+      <img :src="item.picUrl ? item.picUrl : item.coverImgUrl" alt="" />
+      <div :class="select==index?'desc show':'desc'">
+        <div class="name">{{ item.song ? item.song.album.name : "" }}</div>
         <div class="info">{{ item.copywriter ? item.copywriter : "" }}</div>
-        <!-- 新歌卡片 歌名 -->
-        <div class="info">{{ item.song ? item.song.album.name : "" }}</div>
-        <div class="bottom clearfix">
-          <!-- 播放次数 -->
-          <span>{{ item.playCount ? "播放次数：" + item.playCount : "" }}</span>
-          <!-- 新歌卡片 歌手 -->
-          <div class="author">
-            {{ item.song ? item.song.artists[0].name : "" }}
-          </div>
+        <div class="author">
+          {{ item.song ? item.song.artists[0].name : "" }}
+        </div>
+        <div class="playcount">
+          {{ item.playCount ? "播放次数：" + item.playCount : "" }}
         </div>
       </div>
-    </el-card>
+    </div>
   </div>
 </template>
 
@@ -41,14 +35,15 @@ export default {
     return {
       // song Play URL
       playURL: "",
+
+      // cover is show
+      select:''
     };
   },
-  created() {
-    // console.log(this.list);
-  },
+  created() {},
   methods: {
     // 点击播放
-    clickToPlay(id) {
+    clickToPlay(id,index) {
       // 获得 该卡片的id
       // console.log("itemID",id);
 
@@ -63,6 +58,9 @@ export default {
         this.$parent.playURL = this.playURL;
         // console.log(this.$parent.playURL,this.playURL);
       });
+
+      // cover show
+      this.select = index
     },
   },
 };
