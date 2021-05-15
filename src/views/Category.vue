@@ -18,10 +18,8 @@
       </ul>
 
       <!-- empty -->
-      <div class="empty" v-if="list.length == 0">
-        <i class="el-icon-loading"></i>
-        暂时为空，尝试刷新页面
-      </div>
+      <Empty v-if="list.length == 0"></Empty>
+      
     </div>
     
     <!-- list -->
@@ -49,6 +47,8 @@
 import HighQualityCard from "@/components/Card/HighQuality.vue";
 // Card
 import Card from "@/components/Card/Card.vue";
+// Empty
+import Empty from "@/components/Empty/Empty.vue";
 // Play Bar
 import PlayBar from "@/components/PlayBar/PlayBar.vue";
 
@@ -90,6 +90,7 @@ export default {
   components: {
     HighQualityCard,
     Card,
+    Empty,
   },
 
   created() {

@@ -33,6 +33,11 @@ const routes = [
     name: 'Search',
     component: () => import('../views/Search.vue')
   },
+  {
+    path: '/mv',
+    name: 'MV',
+    component: () => import('../views/MV.vue')
+  },
 ]
 
 const router = new VueRouter({

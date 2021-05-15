@@ -23,11 +23,8 @@
       <!-- list card -->
       <ListCard :list="list" v-if="list.length > 0" />
 
-      <!-- empty -->
-      <div class="empty" v-if="list.length == 0">
-        <i class="el-icon-loading"></i>
-        暂时为空，尝试刷新页面
-      </div>
+    <!-- empty -->
+    <Empty v-if="list.length == 0"></Empty>
     </div>
   </div>
 </template>
@@ -35,6 +32,8 @@
 <script>
 // List Card
 import ListCard from "@/components/Card/ListCard.vue";
+// Empty
+import Empty from "@/components/Empty/Empty.vue";
 
 // API
 import {
@@ -58,6 +57,7 @@ export default {
   },
   components: {
     ListCard,
+    Empty
   },
   created() {
     // 初始化

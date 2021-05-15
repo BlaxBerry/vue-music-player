@@ -2,17 +2,25 @@
   <div id="home">
     <!-- Home -->
     <Swipe :swipeList="swipeList" v-if="swipeList.length > 0"></Swipe>
+    <!-- empty -->
+    <Empty v-if="swipeList.length == 0"></Empty>
 
     <!-- Recommend MV  -->
     <div class="recommend_mv">
       <h2>Recommend MV</h2>
-      <MVCard :list="recommendMVList"></MVCard>
+      <MVCard :list="recommendMVList" v-if="recommendMVList.length>0"></MVCard>
     </div>
+    <!-- empty -->
+    <Empty v-if="recommendMVList.length == 0"></Empty>
+
     <!-- card List -->
     <div class="recommend_music">
       <h2>Recommend Music</h2>
-      <Card :list="recommendList" v-if="swipeList.length > 0" />
+      <Card :list="recommendList"  />
     </div>
+    <!-- empty -->
+    <Empty v-if="recommendList.length == 0"></Empty>
+  
   </div>
 </template>
 
@@ -24,6 +32,8 @@ import Swipe from "@/components/Swipe/Swipe.vue";
 import Card from "@/components/Card/Card.vue";
 // MV Card
 import MVCard from "@/components/Card/MVCard.vue";
+// Empty
+import Empty from "@/components/Empty/Empty.vue";
 
 // API
 import {
@@ -51,6 +61,7 @@ export default {
     Swipe,
     Card,
     MVCard,
+    Empty,
   },
   created() {
     // get Swipe Pics
@@ -79,7 +90,6 @@ export default {
   padding-top: 1rem;
   padding-left: 7rem + 2rem;
   padding-right: 1rem;
-
 
   h2 {
     margin-bottom: 1rem;

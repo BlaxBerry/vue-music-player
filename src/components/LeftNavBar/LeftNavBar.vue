@@ -28,7 +28,7 @@
       </el-menu-item>
 
       <!-- MV -->
-      <el-menu-item index="3" disabled>
+      <el-menu-item index="/mv">
         <i class="el-icon-film"></i>
         <span slot="title">MV</span>
       </el-menu-item>
