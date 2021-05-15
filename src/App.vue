@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="leftMenuClose?'':'left_menu_show'" >
     <!-- <router-link to="/about">About</router-link> -->
 
     <!-- Left Nav Bar -->
@@ -18,6 +18,11 @@ import LeftNavBar from "@/components/LeftNavBar/LeftNavBar.vue";
 
 export default {
   name: "Home",
+  data(){
+    return {
+      leftMenuClose:false
+    }
+  },
   components: {
     TopNavBar,
     LeftNavBar,
@@ -28,7 +33,7 @@ export default {
 <style lang="less">
 @import "./assets/style/base.less";
 @import "./assets/style/App/App.less";
-// body {
-//   background-color: black;
-// }
+.left_menu_show {
+  padding-left: 7rem;
+}
 </style>

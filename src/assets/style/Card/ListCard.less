@@ -1,13 +1,21 @@
+@import "../base.less";
 .card {
   display: flex;
   align-items: center;
   width: 100%;
-  margin-bottom: 0.5rem;
+  margin:1rem 0;
   border-radius: 1rem;
+  font-weight: 700;
   cursor: pointer;
+  transition: all .5s;
+
   &:hover {
-    background-color: grey;
-    color: honeydew;
+    box-shadow: @shadow1;
+    color: @ColorFont;
+    .pic {
+      transform: scale(1.2);
+      box-shadow: @shadow1;
+    }
   }
 
   .pic {
@@ -15,6 +23,7 @@
     width: 5rem;
     overflow: hidden;
     border-radius: 0.5rem;
+    transition: all .5s;
     img {
       width: 100%;
     }
@@ -39,6 +48,16 @@
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
     }
+  }
+}
+.selected {
+  color: @ColorFont;
+  font-weight: 700;
+  // background-color: @GlassBackColor;
+  box-shadow: @shadow1;
+  .pic {
+    transform: scale(1.1);
+    box-shadow: @shadow1;
   }
 }
 
@@ -71,6 +90,7 @@
 //PC
 @media screen and (min-width: 750px) {
   .card {
+    font-size: 2rem;
     height: 10rem;
     .index {
       width: 5rem;

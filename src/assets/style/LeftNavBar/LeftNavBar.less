@@ -1,3 +1,4 @@
+@import "../../style/base.less";
 #left_nav_bar {
   display: flex;
   flex-direction: column;
@@ -9,6 +10,9 @@
   left: 0;
   z-index: 4;
 
+  /deep/.el-menu {
+    border: 1px solid @Color1;
+  }
   // 顶部按钮
   /deep/.el-radio-group {
     margin-bottom: 0.5rem;

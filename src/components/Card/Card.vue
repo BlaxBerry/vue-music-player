@@ -2,13 +2,13 @@
   <!-- Card -->
   <div id="card">
     <div
-      class="card"
+      :class="select==index?'card selected':'card'"
       v-for="item,index in list"
       :key="item.id"
       @click="clickToPlay(item.id,index)"
     >
       <img :src="item.picUrl ? item.picUrl : item.coverImgUrl" alt="" />
-      <div :class="select==index?'desc show':'desc'">
+      <div :class="select==index?'desc descShow':'desc'">
         <div class="name">{{ item.song ? item.song.album.name : "" }}</div>
         <div class="info">{{ item.copywriter ? item.copywriter : "" }}</div>
         <div class="author">

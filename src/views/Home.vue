@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <!-- Home -->
-    <div class="swper box">
+    <div class="swper">
       <Swipe :swipeList="swipeList" v-if="swipeList.length > 0"></Swipe>
       <!-- empty -->
       <Empty v-if="swipeList.length == 0"></Empty>
@@ -98,7 +98,7 @@ export default {
 
     // get new Songs
     GetnewSong().then((res) => {
-      console.log(res.result);
+      // console.log(res.result);
       this.newSongList = res.result;
     });
 
@@ -110,7 +110,7 @@ export default {
 
     // 推荐MV
     GetRecommendMV().then((res) => {
-      console.log(res);
+      // console.log(res);
       this.recommendMVList = res.result;
     });
   },
@@ -120,8 +120,7 @@ export default {
 <style lang="less" scoped>
 #home {
   padding-top: 1rem;
-  padding-left: 7rem;
-  padding-right: 1rem;
+  // padding-right: 1rem;
 
   h2 {
     font-size: 2rem;

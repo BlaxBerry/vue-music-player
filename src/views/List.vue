@@ -1,12 +1,15 @@
 <template>
   <!-- list -->
-  <div id="list">
+  <div id="list" >
     <audio
       :src="playURL"
       autoplay
       controls
       style="width:100%; position:fixed; bottom:0; left:0; z-index: 9; "
     ></audio>
+
+    <img 
+    :src="backgrouondImgURL" alt="" class="background_mg">
 
     <!-- tags -->
     <div class="tags">
@@ -42,6 +45,7 @@ import {
 } from "@/network/api.js";
 
 export default {
+  name:'List',
   data() {
     return {
       // 歌曲列表
@@ -53,6 +57,9 @@ export default {
       tags: ["欧美", "日本", "韩国", "全部"],
       // 选中的 tag
       tagSelected: "欧美",
+
+      // background Pic
+      backgrouondImgURL:''      
     };
   },
   components: {

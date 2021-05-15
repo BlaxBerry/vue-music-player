@@ -2,10 +2,10 @@
   <!-- List Card -->
   <div id="list_card">
     <div
-      class="card"
+      :class="select == index ? 'card selected' : 'card'"
       v-for="(item, index) in list"
       :key="item.id"
-      @click="clickToPlay(item)"
+      @click="clickToPlay(item,index,item.album.picUrl)"
     >
       <div class="index">{{ index + 1 }}</div>
       <div class="pic">
@@ -28,6 +28,12 @@ import {
 } from "@/network/api.js";
 
 export default {
+  data() {
+    return {
+      // selected style
+      select: "",
+    };
+  },
   props: ["list"],
   // time filter
   filters: {
@@ -43,12 +49,12 @@ export default {
   },
   methods: {
     // // click to paly
-    clickToPlay(item) {
+    clickToPlay(item,index,backImg) {
       //   // 点击获取 play URL
-      //   // console.log(item);
+        // console.log(item);
       //   // console.log(item.mp3Url);
       //
-      //  
+      //
 
       GetPlaySongUrl(item.id).then((res) => {
         // console.log(res.data[0].url);
@@ -60,6 +66,12 @@ export default {
           type: "warning",
         });
       });
+      // selected style
+      this.select = index;
+
+      // backgound Image
+      this.$parent.backgrouondImgURL = backImg;
+      // console.log(this.$parent.backgrouondImgURL);
     },
   },
 };

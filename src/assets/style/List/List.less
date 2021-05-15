@@ -1,21 +1,35 @@
+@import "../base.less";
 #list {
-    padding-left: 7rem;
-    position: relative;
+  position: relative;
+  height: 100vh;
+  overflow: scroll;
 
-    .tags {
-      ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem 0;
-        li {
-          padding: 0 1rem;
-          cursor: pointer;
-        }
-        .active {
-          color: red;
-        }
+  .tags {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 0;
+      font-weight: 700;
+      li {
+        padding: 0 1rem;
+        cursor: pointer;
+      }
+      .active {
+        color: @Color6;
       }
     }
   }
+
+  // background img
+  .background_mg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    filter: blur(2.5rem);
+  }
+}

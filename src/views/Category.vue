@@ -92,7 +92,7 @@ export default {
         limit: 2,
         cat: cat,
       }).then((res) => {
-        console.log(res.playlists);
+        // console.log(res.playlists);
         this.topHighQuality = res.playlists[1];
       });
 
@@ -103,7 +103,7 @@ export default {
         cat: cat,
       }).then((res) => {
         // console.log(res);
-        console.log(res.playlists);
+        // console.log(res.playlists);
         this.list = res.playlists;
         this.totalPage = res.total;
       });

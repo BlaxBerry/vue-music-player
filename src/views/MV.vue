@@ -120,12 +120,12 @@ export default {
         limit: this.limit,
         offset: (this.offset - 1) * this.limit,
       }).then((res) => {
-        console.log("list", res);
+        // console.log("list", res);
         this.list = res.data;
         if (res.count) {
           this.totalPages = res.count;
         }
-        console.log(this.totalPages);
+        // console.log(this.totalPages);
       });
     },
 
@@ -159,7 +159,6 @@ export default {
 <style lang="less" scoped>
 #mv {
   padding-top: 1rem;
-  padding-left: 7rem;
   padding-right: 1rem;
   padding-bottom: 1rem;
 
