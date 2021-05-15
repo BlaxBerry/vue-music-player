@@ -65,3 +65,12 @@ export const GetCatrgoryList = (params) => instance.get('/top/playlist/highquali
 // 日本：8
 // 韩国：16
 export const GetList= (params) => instance.get('/top/song',{params});
+
+
+// MV 
+// area 地区
+// type 类型 （官方、原生、现场）
+// order 排序 （上升最快、最热、最新）
+// limit 数量 默认30
+// offset 页数 （页数-1）*limit
+export const GetMV= (params) => instance.get('/mv/all',{params});

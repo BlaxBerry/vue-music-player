@@ -88,7 +88,7 @@ export default {
 <style lang="less" scoped>
 #home {
   padding-top: 1rem;
-  padding-left: 7rem + 2rem;
+  padding-left: 7rem;
   padding-right: 1rem;
 
   h2 {

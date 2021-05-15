@@ -19,22 +19,12 @@
 
       <!-- empty -->
       <Empty v-if="list.length == 0"></Empty>
-      
     </div>
-    
+
     <!-- list -->
     <Card :list="list" v-if="list.length > 0"></Card>
 
-    <!-- page -->
-    <el-pagination
-      layout="prev, pager, next"
-      :page-size="10"
-      :pager-count="5"
-      :total="totalPage"
-      :current-page="currentPage"
-      @current-change="handleCurrentChange"
-    >
-    </el-pagination>
+
 
     <!-- PLay Bar -->
     <!-- <PlayBar></PlayBar> -->
@@ -68,6 +58,9 @@ export default {
 
       // 歌单列表
       list: [],
+      // 显示个数
+      limit: 20,
+
 
       // Tags 全部分类标签
       // 不想全部都要，只留留自己喜欢的
@@ -75,13 +68,6 @@ export default {
       // 选中的tag
       tagSelected: "欧美",
 
-      // 页数
-      // 总页数
-      totalPage: 0,
-      // 当前页数
-      currentPage: 1,
-      // 点击的页码
-      selectPage:'',
 
       // 播放URL
       playURL: "",
@@ -95,30 +81,29 @@ export default {
 
   created() {
     // 初始化
-    this.init(this.tagSelected, this.currentPage);
+    this.init(this.tags[0]);
   },
 
   methods: {
     // 获取歌单列表 + 顶部精品歌单
-    init(cat, page) {
-
+    init(cat) {
       // 获取顶部精品歌单卡片
       GetHighQualitySong({
-        limit: 1,
+        limit: 2,
         cat: cat,
       }).then((res) => {
-        // console.log(res.playlists[0]);
-        this.topHighQuality = res.playlists[0];
+        console.log(res.playlists);
+        this.topHighQuality = res.playlists[1];
       });
 
       // 获取列表
       GetCatrgoryList({
-        limit: 10,
-        offset: (page - 1) * 10,
+        limit: this.limit,
+        offset: (this.offset - 1) * this.limit,
         cat: cat,
       }).then((res) => {
         // console.log(res);
-        // console.log(res.playlists);
+        console.log(res.playlists);
         this.list = res.playlists;
         this.totalPage = res.total;
       });
@@ -129,15 +114,7 @@ export default {
       this.tagSelected = item;
       // console.log(item);
       // 调用函数
-      this.init(this.tagSelected, this.currentPage);
-    },
-
-    // 切换页面 page页码
-    handleCurrentChange(page) {
-      // console.log(page);
-      this.selectPage = page;
-      // 调用函数
-      this.init(this.tagSelected, this.selectPage);
+      this.init(this.tagSelected);
     },
   },
 };
