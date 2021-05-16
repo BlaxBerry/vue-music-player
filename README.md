@@ -18,26 +18,33 @@ npm install
 npm run serve
 ```
 
-### Home
+### Home 主页
 
-![](./src/assets/images/Home.png)
-
----
-
-### Category
-
-![](./src/assets/images/Category.png)
+![](./src/assets/images/mkHome.png)
 
 ---
 
-### Search
+### Category 分类歌单
 
-![](./src/assets/images/Search.png)
+![](./src/assets/images/mkCategory.png)
 
 ---
 
-### List
+### Search 查询
 
-![](./src/assets/images/List.png)
+![](./src/assets/images/mkSearch.png)
+
+---
+
+### List 列表
+
+![](./src/assets/images/mkList.png)
+
+---
+
+
+### MV
+
+![](./src/assets/images/mkMV.png)
 
 ---
