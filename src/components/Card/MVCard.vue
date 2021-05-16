@@ -1,6 +1,11 @@
 <template>
   <div id="mv_card">
-    <div class="card" v-for="item in list" :key="item.id" @click="goMVDetaill(item.id)">
+    <div
+      class="card"
+      v-for="item in list"
+      :key="item.id"
+      @click="goMVDetaill(item.id)"
+    >
       <img :src="item.picUrl ? item.picUrl : item.cover" alt="" />
       <div class="name">{{ item.name }}</div>
       <div class="author">{{ item.artistName }}</div>
@@ -16,8 +21,10 @@ export default {
   methods: {
     goMVDetaill(id) {
       // console.log(id);
-      this.$router.push(`/detail?id=${id}`)
-       this.$router.go(0)
+      this.$router.push(`/detail?id=${id}`);
+      if ((this.$router.path = "/deatil")) {
+        this.$router.go(0);
+      }
     },
   },
 };

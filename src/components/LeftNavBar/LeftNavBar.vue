@@ -14,7 +14,7 @@
       class="el-menu-vertical-demo"
       :collapse="isCollapse"
       background-color="#161a1d"
-      active-text-color="#e5383b"
+      active-text-color="#ba181b"
       router
     >
       <!-- close -->
