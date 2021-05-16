@@ -38,6 +38,14 @@ const routes = [
     name: 'MV',
     component: () => import('../views/MV.vue')
   },
+  {
+    path: '/detail',
+    name: 'Detail',
+    component: () =>
+    import ('../views/Detail.vue')
+
+
+  },
 ]
 
 const router = new VueRouter({

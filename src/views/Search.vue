@@ -14,7 +14,7 @@
       </h4>
       <!-- Result list -->
       <h2 v-if="inputVal != ''">
-        Found : <span>{{ this.resultCount }} </span>
+        Found : <span>{{ this.resultCount }} </span> results
       </h2>
     </div>
 
@@ -125,16 +125,16 @@ export default {
         if (type == 1) {
           this.resultList = res.result.songs;
           this.resultCount = res.result.songCount;
-          console.log(this.resultList);
+          // console.log(this.resultList);
         } else if (type == 1004) {
           this.resultList = res.result.mvs;
           this.resultCount = res.result.mvCount;
-          console.log(this.resultList);
+          // console.log(this.resultList);
         } else if (type == 1000) {
           console.log(res.result);
           this.resultList = res.result.playlists;
           this.resultCount = res.result.playlistCount;
-          console.log(this.resultList);
+          // console.log(this.resultList);
         }
       });
     },
@@ -165,7 +165,7 @@ export default {
           break;
       }
 
-      console.log(this.type);
+      // console.log(this.type);
 
       if (this.inputVal != "") {
         this.init(this.type);
@@ -177,10 +177,20 @@ export default {
 
 <style lang="less" scoped>
 @import "../assets/style/Search/Search.less";
-ul {
-  display: flex;
-}
-.active {
-  color: red;
-}
+
+
+  .tags {
+    ul {
+      display: flex;
+      li {
+        padding: 1rem;
+        font-size: 1.8rem;
+        cursor: pointer;
+      }
+      .active {
+        color: red;
+      }
+    }
+  }
+
 </style>

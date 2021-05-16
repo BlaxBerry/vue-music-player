@@ -33,9 +33,12 @@ export default {
 <style lang="less">
 @import "./assets/style/base.less";
 @import "./assets/style/App/App.less";
-.left_menu_show {
-  padding-left: 8rem;
+#app {
   padding-top: 5rem;
   padding-bottom: 6rem;
+}
+.left_menu_show {
+  padding-left: 8rem;
+
 }
 </style>

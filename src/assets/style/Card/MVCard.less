@@ -2,17 +2,25 @@
 #mv_card {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   cursor: pointer;
 
   .card {
     position: relative;
     border-radius: 1rem;
     overflow: hidden;
+    padding-bottom: 1rem;
+    background: -webkit-linear-gradient(left, @Color1, @Color2);
+    box-shadow: @shadow2;
     img {
       width: 100%;
     }
     span {
       color: #999;
+    }
+    div,
+    span {
+      padding-left: 1rem;
     }
     .cover {
       display: none;
@@ -27,7 +35,7 @@
         position: absolute;
         top: 30%;
         left: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
         &::before {
           font-size: 4rem;
           color: @Color8;

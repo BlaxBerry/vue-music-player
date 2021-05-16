@@ -55,7 +55,7 @@ export const GetHighQualitySong = (params) => instance.get('/top/playlist/highqu
 // limit: 单页显示数量
 // offset分页 （页数-1）*limit
 // cat分类标签
-export const GetCatrgoryList = (params) => instance.get('/top/playlist/highquality', {params});
+export const GetCatrgoryList = (params) => instance.get('/top/playlist/highquality', { params });
 
 // list 歌曲列表
 // type 地区id
@@ -64,7 +64,7 @@ export const GetCatrgoryList = (params) => instance.get('/top/playlist/highquali
 // 欧美：96
 // 日本：8
 // 韩国：16
-export const GetList= (params) => instance.get('/top/song',{params});
+export const GetList = (params) => instance.get('/top/song', { params });
 
 
 // MV 
@@ -73,7 +73,7 @@ export const GetList= (params) => instance.get('/top/song',{params});
 // order 排序 （上升最快、最热、最新）
 // limit 数量 默认30
 // offset 页数 （页数-1）*limit
-export const GetMV= (params) => instance.get('/mv/all',{params});
+export const GetMV = (params) => instance.get('/mv/all', { params });
 
 
 // 搜索音乐
@@ -81,4 +81,18 @@ export const GetMV= (params) => instance.get('/mv/all',{params});
 // limit 数量，默认30
 // offset： 页数
 // type类型 music：1, album:1000, MV：1004
-export const SearchMusic= (params) => instance.get('/search',{params});
+export const SearchMusic = (params) => instance.get('/search', { params });
+
+
+// 播放MV URL
+// id:mvid
+export const GetMVPlayURL = (params) => instance.get('/mv/url', { params });
+
+// 获取相关MV
+export const GetSameMV = (params) => instance.get('/simi/mv', { params });
+
+// MV详细信息
+export const GetMVDetail = (params) => instance.get('/mv/detail', { params });
+
+// 歌手信息
+export const GetMVAuthorDetail = (params) => instance.get('/artists', { params });
