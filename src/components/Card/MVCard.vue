@@ -1,11 +1,11 @@
 <template>
   <div id="mv_card">
     <div class="card" v-for="item in list" :key="item.id">
-      <img :src="item.picUrl" alt="" v-if="item.picUrl" />
-      <img :src="item.cover" alt="" v-if="item.cover" />
+      <img :src="item.picUrl?item.picUrl:item.cover" alt=""/>
       <div class="name">{{ item.name }}</div>
       <div class="author">{{ item.artistName }}</div>
       <span>{{ "播放次数" + item.playCount }}</span>
+      <div class="cover"><i class="el-icon-video-play"></i></div>
     </div>
   </div>
 </template>

@@ -3,27 +3,30 @@
   display: flex;
   align-items: center;
   width: 100%;
-  margin:1rem 0;
+  margin: 1rem 0;
   border-radius: 1rem;
   font-weight: 700;
   cursor: pointer;
-  transition: all .5s;
+  transition: all 0.5s;
 
   &:hover {
-    box-shadow: @shadow1;
+    background-color: @listCardBackColor;
+    box-shadow: -3px -3px 15px 0px @GlassBackColor;
     color: @ColorFont;
     .pic {
-      transform: scale(1.2);
+      transform: scale(1.2) translateX(-0.5rem);
       box-shadow: @shadow1;
     }
   }
-
+  .index {
+    text-align: center;
+  }
   .pic {
     height: 5rem;
     width: 5rem;
     overflow: hidden;
     border-radius: 0.5rem;
-    transition: all .5s;
+    transition: all 0.5s;
     img {
       width: 100%;
     }
@@ -53,10 +56,10 @@
 .selected {
   color: @ColorFont;
   font-weight: 700;
-  // background-color: @GlassBackColor;
-  box-shadow: @shadow1;
+  background-color: @listCardBackColor;
+  box-shadow: -3px -3px 15px 0px @GlassBackColor; 
   .pic {
-    transform: scale(1.1);
+    transform: scale(1.2) translateX(-0.5rem);
     box-shadow: @shadow1;
   }
 }

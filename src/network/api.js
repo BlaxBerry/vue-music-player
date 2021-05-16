@@ -74,3 +74,11 @@ export const GetList= (params) => instance.get('/top/song',{params});
 // limit 数量 默认30
 // offset 页数 （页数-1）*limit
 export const GetMV= (params) => instance.get('/mv/all',{params});
+
+
+// 搜索音乐
+// keywords: 名
+// limit 数量，默认30
+// offset： 页数
+// type类型 music：1, album:1000, MV：1004
+export const SearchMusic= (params) => instance.get('/search',{params});

@@ -9,11 +9,11 @@
     >
       <div class="index">{{ index + 1 }}</div>
       <div class="pic">
-        <img :src="item.album.picUrl" :alt="item.album.name" />
+        <img :src="item.album.picUrl?item.album.picUrl:item.artists[0].img1v1Url" :alt="item.album.name" />
       </div>
       <div class="content">
-        <div class="name">{{ item.album.name }}</div>
-        <div class="author">{{ item.album.artists[0].name }}</div>
+        <div class="name">{{ item.name?item.name :item.album.name}}</div>
+        <div class="author">{{ item.album.artists?item.album.artists[0].name:item.artists[0].name}}</div>
         <!-- <div class="company">{{ item.album.company }}</div> -->
         <div class="time">{{ item.duration | timeHandle }}</div>
       </div>
@@ -74,6 +74,10 @@ export default {
       // console.log(this.$parent.backgrouondImgURL);
     },
   },
+  created(){
+    // send background pic
+    
+  }
 };
 </script>
 <style lang="less" scoped>

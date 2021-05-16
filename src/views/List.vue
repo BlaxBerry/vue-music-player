@@ -1,6 +1,6 @@
 <template>
   <!-- list -->
-  <div id="list" >
+  <div id="list">
     <audio
       :src="playURL"
       autoplay
@@ -8,8 +8,7 @@
       style="width:100%; position:fixed; bottom:0; left:0; z-index: 9; "
     ></audio>
 
-    <img 
-    :src="backgrouondImgURL" alt="" class="background_mg">
+    <img :src="backgrouondImgURL" alt="" class="background_mg" />
 
     <!-- tags -->
     <div class="tags">
@@ -23,12 +22,11 @@
           {{ item }}
         </li>
       </ul>
-      <!-- list card -->
-      <ListCard :list="list" v-if="list.length > 0" />
-
-      <!-- empty -->
-      <Empty v-if="list.length == 0"></Empty>
     </div>
+    <!-- list card -->
+    <ListCard :list="list" v-if="list.length > 0" />
+    <!-- empty -->
+    <Empty v-if="list.length == 0"></Empty>
   </div>
 </template>
 
@@ -45,7 +43,7 @@ import {
 } from "@/network/api.js";
 
 export default {
-  name:'List',
+  name: "List",
   data() {
     return {
       // 歌曲列表
@@ -59,7 +57,7 @@ export default {
       tagSelected: "欧美",
 
       // background Pic
-      backgrouondImgURL:''      
+      backgrouondImgURL: "",
     };
   },
   components: {
