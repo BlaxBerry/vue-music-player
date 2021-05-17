@@ -2,17 +2,22 @@
   <!-- Card -->
   <div id="card">
     <div
-      :class="select==index?'card selected':'card'"
-      v-for="item,index in list"
+      :class="select == index ? 'card selected' : 'card'"
+      v-for="(item, index) in list"
       :key="item.id"
-      @click="clickToPlay(item.id,index)"
+      @click="clickToPlay(item.id, index, item)"
     >
       <img :src="item.picUrl ? item.picUrl : item.coverImgUrl" alt="" />
-      <div :class="select==index?'desc descShow':'desc'">
-        <div class="name">{{ item.song ? item.song.album.name : "" }}</div>
+      <div :class="select == index ? 'desc descShow' : 'desc'">
+        <div class="name">
+          {{ item.song ? item.song.album.name : item.name }}
+        </div>
         <div class="info">{{ item.copywriter ? item.copywriter : "" }}</div>
         <div class="author">
           {{ item.song ? item.song.artists[0].name : "" }}
+        </div>
+        <div class="author">
+          {{ item.creator ? item.creator.nickname : "" }}
         </div>
         <div class="playcount">
           {{ item.playCount ? "播放次数：" + item.playCount : "" }}
@@ -37,13 +42,13 @@ export default {
       playURL: "",
 
       // cover is show
-      select:''
+      select: "",
     };
   },
   created() {},
   methods: {
     // 点击播放
-    clickToPlay(id,index) {
+    clickToPlay(id, index, item) {
       // 获得 该卡片的id
       // console.log("itemID",id);
 
@@ -60,7 +65,16 @@ export default {
       });
 
       // cover show
-      this.select = index
+      this.select = index;
+
+      // console.log(item);
+      // 判断是 song单曲/ album歌单
+      if (item.highQuality == undefined) {
+        // console.log("点击的是单曲，不做操作");
+      } else {
+        // console.log("点击的是歌单，跳转到歌单详情页");
+        this.$router.push("/album?id=" + id);
+      }
     },
   },
 };

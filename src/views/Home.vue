@@ -26,7 +26,7 @@
     <!-- empty -->
     <Empty v-if="recommendMVList.length == 0"></Empty>
 
-    <!-- card List -->
+    <!-- album list -->
     <div class="recommend_music box">
       <h2>Recommend Music</h2>
       <Card :list="recommendList" />

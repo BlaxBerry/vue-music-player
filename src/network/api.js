@@ -96,3 +96,7 @@ export const GetMVDetail = (params) => instance.get('/mv/detail', { params });
 
 // 歌手信息
 export const GetMVAuthorDetail = (params) => instance.get('/artists', { params });
+
+// 歌单详情
+// id
+export const GetAlbumDetail = (params) => instance.get('/playlist/detail', { params });

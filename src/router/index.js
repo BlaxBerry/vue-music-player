@@ -39,12 +39,18 @@ const routes = [
     component: () => import('../views/MV.vue')
   },
   {
+    // MV 详情
     path: '/detail',
     name: 'Detail',
     component: () =>
     import ('../views/Detail.vue')
-
-
+  },
+  {
+    // album 详情
+    path: '/album',
+    name: 'Album',
+    component: () =>
+    import ('../views/Album.vue')
   },
 ]
 

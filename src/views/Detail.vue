@@ -96,7 +96,7 @@ export default {
         id: this.artistID,
       }).then((res) => {
         // 歌手相关信息
-        console.log(res);
+        // console.log(res);
         this.artistDetail = res.artist;
         // console.log(this.artistDetail);
       });

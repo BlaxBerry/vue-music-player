@@ -5,15 +5,31 @@
       :class="select == index ? 'card selected' : 'card'"
       v-for="(item, index) in list"
       :key="item.id"
-      @click="clickToPlay(item,index,item.album.picUrl)"
+      @click="clickToPlay(item, index)"
     >
       <div class="index">{{ index + 1 }}</div>
       <div class="pic">
-        <img :src="item.album.picUrl?item.album.picUrl:item.artists[0].img1v1Url" :alt="item.album.name" />
+        <img
+          :src="
+            item.album.picUrl ? item.album.picUrl : item.artists[0].img1v1Url
+          "
+          :alt="item.album.name"
+          v-if="item.album"
+        />
+        <img :src="item.al.picUrl" alt="" v-if="item.al" />
       </div>
       <div class="content">
-        <div class="name">{{ item.name?item.name :item.album.name}}</div>
-        <div class="author">{{ item.album.artists?item.album.artists[0].name:item.artists[0].name}}</div>
+        <div class="name">{{ item.album ? item.album.name : item.name }}</div>
+        <div class="author" v-if="item.album">
+          {{
+            item.album.artists
+              ? item.album.artists[0].name
+              : item.artists[0].name
+          }}
+        </div>
+        <div class="author" v-if="item.ar">
+          {{ item.ar[0].name }}
+        </div>
         <!-- <div class="company">{{ item.album.company }}</div> -->
         <div class="time">{{ item.duration | timeHandle }}</div>
       </div>
@@ -49,9 +65,9 @@ export default {
   },
   methods: {
     // // click to paly
-    clickToPlay(item,index,backImg) {
+    clickToPlay(item, index) {
       //   // 点击获取 play URL
-        // console.log(item);
+      // console.log(item);
       //   // console.log(item.mp3Url);
       //
       //
@@ -70,14 +86,15 @@ export default {
       this.select = index;
 
       // backgound Image
-      this.$parent.backgrouondImgURL = backImg;
-      // console.log(this.$parent.backgrouondImgURL);
+      if (item.album) {
+        this.$parent.backgrouondImgURL = item.album.picUrl;
+        // console.log(this.$parent.backgrouondImgURL);
+      }
     },
   },
-  created(){
+  created() {
     // send background pic
-    
-  }
+  },
 };
 </script>
 <style lang="less" scoped>

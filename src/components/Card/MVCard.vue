@@ -22,9 +22,10 @@ export default {
     goMVDetaill(id) {
       // console.log(id);
       this.$router.push(`/detail?id=${id}`);
-      if ((this.$router.path = "/deatil")) {
-        this.$router.go(0);
-      }
+      
+      setTimeout(() => {
+            this.$router.go(0)
+        }, 500);
     },
   },
 };
