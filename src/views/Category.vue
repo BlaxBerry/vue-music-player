@@ -59,7 +59,7 @@ export default {
       // 歌单列表
       list: [],
       // 显示个数
-      limit: 20,
+      limit: 50,
 
 
       // Tags 全部分类标签

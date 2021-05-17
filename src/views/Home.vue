@@ -9,7 +9,10 @@
 
     <!-- new song -->
     <div class="new_songs box">
-      <h2>New Songs</h2>
+      <h2>
+        New <br />
+        <span>Songs</span>
+      </h2>
       <Card :list="newSongList" v-if="newSongList.length > 0"></Card>
       <!-- empty -->
       <Empty v-if="newSongList.length == 0"></Empty>
@@ -17,7 +20,10 @@
 
     <!-- Recommend MV  -->
     <div class="recommend_mv box">
-      <h2>Recommend MV</h2>
+      <h2>
+        Recommend <br />
+        <span>MVs</span>
+      </h2>
       <MVCard
         :list="recommendMVList"
         v-if="recommendMVList.length > 0"
@@ -28,7 +34,10 @@
 
     <!-- album list -->
     <div class="recommend_music box">
-      <h2>Recommend Music</h2>
+      <h2>
+        Recommend <br />
+        <span>Albums</span>
+      </h2>
       <Card :list="recommendList" />
     </div>
     <!-- empty -->
@@ -118,17 +127,22 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import "../assets/style/base.less";
 #home {
   padding-top: 0;
   // padding-right: 1rem;
 
   h2 {
-    font-size: 2rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
+    padding: 1rem 2rem 1rem;
+    span {
+      color:@Color5;
+    }
   }
 
   .box {
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
   }
 }
 </style>
