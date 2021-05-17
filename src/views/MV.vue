@@ -157,6 +157,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import "../assets/style/base.less";
 #mv {
   padding-top: 1rem;
   padding-right: 1rem;
@@ -166,11 +167,12 @@ export default {
     ul {
       display: flex;
       li {
+        font-size: 2rem;
         padding: 1rem;
         cursor: pointer;
       }
       .active {
-        color: red;
+         color: @Color4;
       }
     }
   }

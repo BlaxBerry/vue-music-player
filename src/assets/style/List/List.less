@@ -2,8 +2,8 @@
 #list {
   position: relative;
   height: 100vh;
-  overflow: scroll;
-  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
   margin-left: -1rem;
   padding-left: 1rem;
 
@@ -18,11 +18,12 @@
       padding: 1rem 0;
       font-weight: 700;
       li {
+        font-size: 2rem;
         padding: 0 1rem;
         cursor: pointer;
       }
       .active {
-        color: @Color6;
+        color: @Color4;
       }
     }
   }

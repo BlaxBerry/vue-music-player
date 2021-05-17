@@ -31,7 +31,7 @@
           {{ item.ar[0].name }}
         </div>
         <!-- <div class="company">{{ item.album.company }}</div> -->
-        <div class="time">{{ item.duration | timeHandle }}</div>
+        <div class="time" v-if="item.duration">{{ item.duration | timeHandle }}</div>
       </div>
     </div>
   </div>
@@ -54,6 +54,7 @@ export default {
   // time filter
   filters: {
     timeHandle: function(val) {
+      // console.log(val);
       // 339539毫秒
       val / 1000; // 总秒
       let m = parseInt(val / 1000 / 60);

@@ -54,11 +54,15 @@ export default {
       id: this.$route.query.id,
     }).then((res) => {
       // console.log(res);
-      // console.log(res.playlist);
+      console.log(res.playlist);
       this.playlist = res.playlist;
     });
   },
 };
 </script>
 
-<style></style>
+<style>
+#album {
+  padding: 0 1rem;
+}
+</style>

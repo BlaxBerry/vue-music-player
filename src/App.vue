@@ -36,9 +36,9 @@ export default {
 #app {
   padding-top: 5rem;
   padding-bottom: 6rem;
+ overflow-x:hidden;
 }
 .left_menu_show {
   padding-left: 8rem;
-
 }
 </style>
