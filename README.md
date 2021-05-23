@@ -42,7 +42,7 @@ npm run serve
 
 ### List 列表
 
-![](./src/assets/images/mkList.png)
+![](./src/assets/images/mkList.png.png)
 
 ---
 
