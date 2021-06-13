@@ -1,22 +1,13 @@
 # vue-music-player
 
-### 本项目仅共个人学习
-### 请勿擅自传播
+### for personal use only
+### please respect music copyright
+### 本项目仅共个人学习请勿擅自传播
 ### 请支持购买正版音乐
 
 ---
 
-### Project setup
 
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-
-```
-npm run serve
-```
 
 ### Home 主页
 

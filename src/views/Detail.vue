@@ -1,7 +1,7 @@
 <template>
   <div id="detail">
     <!-- video -->
-    <video :src="mvPlayURL" controls autoplay></video>
+    <video :src="mvPlayURL" controls autoplay loop></video>
     <!-- desc -->
     <div class="mv_detail">
       <!-- MV name -->
