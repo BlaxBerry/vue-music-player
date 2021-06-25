@@ -1,47 +1,33 @@
-# vue-music-player
+# SPA music player
 
-### for personal use only
+### Only for personal use 
 ### please respect music copyright
-### 本项目仅共个人学习请勿擅自传播
-### 请支持购买正版音乐
+本项目仅共个人学习请勿擅自传播
+
+请支持购买正版音乐
+
+---
+### tech task
+- Vue.js
+- Vue-Cli
+- Vue-Router
+- ElementUI
+- Axios
+
+---
+### function
+- Category Page
+- Search Page
+- List Page
+- MV Page
+- MV Play Detail Page
 
 ---
 
+#### Moble
+![](./src/assets/images/mobile01.png)
+![](./src/assets/images/mobile02.png)
+![](./src/assets/images/mobile03.png)
 
-
-### Home 主页
-
-![](./src/assets/images/mkHome.png)
-
----
-
-### Category 分类歌单
-
-![](./src/assets/images/mkCategory.png)
-
----
-
-![](./src/assets/images/mkPC.png)
-
----
-
-### Search 查询
-
-![](./src/assets/images/mkSearch.png)
-
----
-
-### List 列表
-
-![](./src/assets/images/mkList.png.png)
-
----
-
-
-### MV
-
-![](./src/assets/images/mkMV.png)
-
----
-
-![](./src/assets/images/mkPC1.png)
+#### pc
+![](./src/assets/images/pc01.png)

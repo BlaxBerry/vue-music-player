@@ -89,11 +89,11 @@ export default {
     init(cat) {
       // 获取顶部精品歌单卡片
       GetHighQualitySong({
-        limit: 1,
+        limit: 2,
         cat: cat,
       }).then((res) => {
-        // console.log(res.playlists);
-        this.topHighQuality = res.playlists[0];
+        console.log(res.playlists);
+        this.topHighQuality = res.playlists[1];
       });
 
       // 获取列表
