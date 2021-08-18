@@ -1,44 +1,32 @@
 <template>
-  <div id="app" :class="leftMenuClose ? '' : 'left_menu_show'">
-    <!-- <router-link to="/about">About</router-link> -->
-
-    <!-- Left Nav Bar -->
-    <LeftNavBar />
-    <!-- Top Nav -->
-    <TopNavBar />
-    <!--router-view -->
-    <router-view />
+  <div id="app">
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
-<script>
-//Top Nav Bar
-import TopNavBar from "@/components/TopNavBar/TopNavBar.vue";
-// Left Nav Bar
-import LeftNavBar from "@/components/LeftNavBar/LeftNavBar.vue";
 
-export default {
-  name: "Home",
-  data() {
-    return {
-      leftMenuClose: false,
-    };
-  },
-  components: {
-    TopNavBar,
-    LeftNavBar,
-  },
-};
-</script>
-
-<style lang="less">
-@import "./assets/style/base.less";
-@import "./assets/style/App/App.less";
+<style lang="scss">
 #app {
-  padding-top: 5rem;
-  padding-bottom: 6rem;
- overflow-x:hidden;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
-.left_menu_show {
-  padding-left: 8rem;
+
+#nav {
+  padding: 30px;
+
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
 }
 </style>

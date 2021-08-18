@@ -1,33 +1,24 @@
-# SPA music player
+# vue-music-player
 
-### Only for personal use 
-### please respect music copyright
-本项目仅共个人学习请勿擅自传播
+## Project setup
+```
+npm install
+```
 
-请支持购买正版音乐
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
----
-### tech task
-- Vue.js
-- Vue-Cli
-- Vue-Router
-- ElementUI
-- Axios
+### Compiles and minifies for production
+```
+npm run build
+```
 
----
-### function
-- Category Page
-- Search Page
-- List Page
-- MV Page
-- MV Play Detail Page
+### Lints and fixes files
+```
+npm run lint
+```
 
----
-
-#### Moble
-![](./src/assets/images/mobile01.png)
-![](./src/assets/images/mobile02.png)
-![](./src/assets/images/mobile03.png)
-
-#### pc
-![](./src/assets/images/pc01.png)
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
