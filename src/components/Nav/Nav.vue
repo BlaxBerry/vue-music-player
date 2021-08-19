@@ -4,6 +4,15 @@
     <!-- top Nav -->
     <v-app-bar dark dense>
       <v-app-bar-nav-icon @click="drawer = true" />
+      <v-text-field
+        v-model="val"
+        rounded
+        filled
+        clearable
+        prepend-inner-icon="mdi-magnify"
+        class="mt-7 ml-2"
+        @keydown.enter="search"
+      />
       <v-spacer></v-spacer>
       <v-btn
         v-for="(item, index) in routeBtns"
@@ -53,6 +62,26 @@
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
+
+    <!-- alert bar -->
+    <v-snackbar
+      v-model="alert"
+      absolute
+      top
+      centered
+      rounded="pill"
+      color="red lighten-1"
+      timeout="2000"
+    >
+      Cannot search an empty !
+      <template v-slot:action="{ attrs }">
+        <v-btn icon color="white" text v-bind="attrs" @click="alert = false">
+          <v-icon dark>
+            mdi-close
+          </v-icon>
+        </v-btn>
+      </template>
+    </v-snackbar>
   </div>
 </template>
 
@@ -60,7 +89,10 @@
 export default {
   data() {
     return {
-      // val: "",   input search value
+      // input search value
+      val: "",
+      // show alert bar
+      alert: false,
       // route link btns
       routeBtns: [
         { icon: "mdi-arrow-left-thick", go: -1 },
@@ -84,7 +116,22 @@ export default {
       group: null,
     };
   },
+  methods: {
+    search() {
+      if (this.val.trim() == "") {
+        this.alert = true;
+      } else {
+        console.log(this.val);
+        this.$router.push("/search?q=" + this.val);
+        this.$router.go(0);
+      }
+    },
+  },
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.alert {
+  top: -20px;
+}
+</style>

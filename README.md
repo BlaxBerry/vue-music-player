@@ -1,24 +1,32 @@
-# vue-music-player
+## vue-music-player 2.0
 
-## Project setup
-```
-npm install
-```
+for personal use only
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Tech Stacks
+- Vue
+- Vue-Cli
+- Vuetify
+- Scss
+- Vue-Router
+- Vuex
+- Axios
 
-### Compiles and minifies for production
-```
-npm run build
-```
+---
 
-### Lints and fixes files
-```
-npm run lint
-```
+### Functions
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+---
+
+### Images
+
+---
+
+### Versions
+- Version **2.0**
+    - **Vuetify**
+    - **Scss**
+    - **Vuex**
+- Version **1.0**
+    - Element-UI
+    - Less
+    - Media Query
