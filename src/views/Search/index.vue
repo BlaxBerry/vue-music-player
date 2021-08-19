@@ -20,6 +20,8 @@
       <v-tab-item>{{ tab }}</v-tab-item>
       <v-tab-item>{{ tab }}</v-tab-item>
     </v-tabs-items>
+
+    <Playbar />
   </div>
 </template>
 
@@ -28,10 +30,12 @@
 import { Search } from "@/api/search.js";
 // components
 import SongLists from "./SongLists.vue";
+import Playbar from "@/components/Playbar/Playbar.vue";
 
 export default {
   components: {
     SongLists,
+    Playbar,
   },
 
   data() {

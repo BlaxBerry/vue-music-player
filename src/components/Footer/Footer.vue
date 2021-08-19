@@ -1,5 +1,5 @@
 <template>
-  <v-footer dark padless class="grey--text">
+  <v-footer v-if="$route.name == 'About'" dark padless class="grey--text">
     <v-card flat tile class="white--text text-center" min-width="100vw">
       <v-card-text>
         <v-btn

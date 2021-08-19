@@ -1,8 +1,8 @@
 <template>
   <!-- topNav + leftNavDrawer -->
-  <div>
+  <div class="py-5">
     <!-- top Nav -->
-    <v-app-bar dark dense>
+    <v-app-bar dark dense fixed>
       <v-app-bar-nav-icon @click="drawer = true" />
       <v-text-field
         v-model="val"
@@ -29,7 +29,7 @@
     <!-- left Nav Drawer -->
     <v-navigation-drawer
       v-model="drawer"
-      absolute
+      fixed
       temporary
       expand-on-hover
       width="150"
@@ -66,7 +66,7 @@
     <!-- alert bar -->
     <v-snackbar
       v-model="alert"
-      absolute
+      fixed
       top
       centered
       rounded="pill"
