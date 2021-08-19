@@ -2,25 +2,35 @@
   <v-list three-line height="80%">
     <v-list-item v-for="item in list" :key="item.id" @click="play(item.id)">
       <!-- avatar -->
-      <v-list-item-avatar>
-        <!-- <v-img :alt="`${chat.title} avatar`" :src="chat.avatar"></v-img> -->
+      <v-list-item-avatar tile size="50" class="mt-5">
+        <v-img
+          src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"
+          alt="item.name"
+        />
       </v-list-item-avatar>
       <!-- name -->
       <v-list-item-content class="py-5">
-        <v-list-item-title>
-          {{ item.name }}
-          <v-icon v-if="item.mvid != 0" color="red" small>
-            mdi-play-box-outline
-          </v-icon>
-        </v-list-item-title>
-        <v-list-item-subtitle
-          v-html="item.artists[0].name"
-          class="red--text text--lighten-2"
-        />
+        <b class="text-truncate">
+          <v-list-item-title>
+            {{ item.name }}
+            <v-chip
+              v-if="item.copyrightId != 0"
+              x-small
+              color="orange"
+              text-color="white"
+              class="mx-1"
+              >MVP
+            </v-chip>
+          </v-list-item-title>
+          <v-list-item-subtitle
+            v-html="item.artists[0].name"
+            class="red--text text--lighten-2 pt-1"
+          />
+        </b>
       </v-list-item-content>
       <!-- time -->
       <v-list-item-icon>
-        <v-list-item-subtitle v-html="item.duration" />
+        <v-list-item-subtitle class="mt-5" v-html="item.duration" />
       </v-list-item-icon>
     </v-list-item>
   </v-list>

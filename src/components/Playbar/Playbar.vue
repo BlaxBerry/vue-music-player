@@ -2,16 +2,14 @@
   <div>
     <v-card class="d-flex flex-no-wrap align-center" dark>
       <!-- img -->
-      <v-avatar class="ma-3" size="50" tile>
+      <v-avatar class="ma-3" size="70" tile>
         <v-img src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"></v-img>
       </v-avatar>
       <!-- play -->
       <v-card-actions>
-        <v-btn v-if="!isPlay" fab icon height="40px" width="40px">
-          <v-icon @click="play">mdi-play</v-icon>
-        </v-btn>
-        <v-btn v-if="isPlay" fab icon height="40px" width="40px">
-          <v-icon @click="pause">mdi-pause</v-icon>
+        <v-btn fab icon height="40px" width="40px">
+          <v-icon v-if="!isPlay" @click="play">mdi-play</v-icon>
+          <v-icon v-if="isPlay" @click="pause">mdi-pause</v-icon>
         </v-btn>
       </v-card-actions>
       <!-- name -->
