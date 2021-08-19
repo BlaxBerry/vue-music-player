@@ -1,9 +1,9 @@
 <template>
   <div color="basil">
     <!-- result name + count -->
-    <v-subheader>
+    <p class="text-caption my-0">
       Search
-      <b class="mx-2 text-h6">{{ $route.query.q }}</b>
+      <span class="mx-1 text-h6 font-weight-bold">{{ $route.query.q }}</span>
       found
       <v-chip
         class="ma-1 font-weight-black"
@@ -14,28 +14,31 @@
         {{ count ? count : 0 }}
       </v-chip>
       results
-    </v-subheader>
+    </p>
 
     <!-- tab -->
-    <v-tabs v-model="tab" color="red lighten-2">
+    <v-tabs v-model="tab" color="red lighten-2" centered>
       <v-tab
         v-for="(item, index) in items"
         :key="index"
         class="font-weight-black"
         @click="changeType(index)"
       >
-        {{ item }}
+        <v-icon class="mr-1">{{ item.icon }}</v-icon>
+        {{ item.name }}
       </v-tab>
     </v-tabs>
     <!-- tab content-->
     <v-tabs-items v-model="tab">
       <!-- songlists -->
-      <v-tab-item><SongLists :list="songList"/></v-tab-item>
+      <v-tab-item>
+        <SongLists :list="songList" @songSelected="getSongSelected" />
+      </v-tab-item>
       <v-tab-item>{{ tab }}</v-tab-item>
       <v-tab-item>{{ tab }}</v-tab-item>
     </v-tabs-items>
 
-    <Playbar />
+    <Playbar v-if="type == 1" :song="songSelected" />
   </div>
 </template>
 
@@ -56,12 +59,22 @@ export default {
     return {
       // tab change
       tab: null,
-      items: ["Lists", "Sheets", "MVs"],
+      items: [
+        { name: "List", icon: "mdi-music-box-outline" },
+        { name: "Sheets", icon: "mdi-music-box-multiple-outline" },
+        { name: "MVs", icon: "mdi-play-box-outline" },
+      ],
       // serach type
       type: 1,
       // list
       songList: [],
+      // sheets
+      songSheets: [],
+      // mvs
+      mvList: [],
       count: 0,
+
+      songSelected: {},
     };
   },
 
@@ -91,11 +104,12 @@ export default {
         type: this.type,
         limit: 10,
       }).then((res) => {
-        console.log(res.data.result.songs);
-        this.songList = res.data.result.songs;
-        this.count = res.data.result.songCount;
-        // handle time
+        // console.log(res.data.result);
+        // 1. song list
         if (res.data.result.songs) {
+          this.songList = res.data.result.songs;
+          this.count = res.data.result.songCount;
+          // handle time
           for (let i = 0; i < this.songList.length; i++) {
             let m = parseInt(this.songList[i].duration / 1000 / 60);
             let s = parseInt((this.songList[i].duration / 1000) % 60);
@@ -104,7 +118,22 @@ export default {
             this.songList[i].duration = m + ":" + s;
           }
         }
+        // 2. song sheets
+        if (res.data.result.playlists) {
+          this.songSheet = res.data.result.playlists;
+          this.count = res.data.result.playlistCount;
+        }
+        // 3. mv list
+        if (res.data.result.mvs) {
+          this.mvList = res.data.result.mvs;
+          this.count = res.data.result.mvCount;
+        }
       });
+    },
+
+    getSongSelected(data) {
+      // console.log(data);
+      this.songSelected = data;
     },
   },
 

@@ -37,12 +37,41 @@
 </template>
 
 <script>
+// api
+import { GetSongURL } from "@/api/songURL.js";
+import { GetSongDetail } from "@/api/songDetail.js";
+
 export default {
   props: ["list"],
 
+  data() {
+    return {
+      song: {
+        name: "",
+        album: [],
+        url: "",
+        pic: "",
+        artist: "",
+      },
+    };
+  },
+
   methods: {
     play(id) {
-      console.log(id);
+      // 1. get song URL
+      GetSongURL({ id: id }).then((res) => {
+        this.song.url = res.data.data[0].url;
+      });
+      // 2. get song detail
+      GetSongDetail({ ids: id }).then((res) => {
+        // console.log(res.data.songs[0]);
+        this.song.name = res.data.songs[0].name;
+        this.song.album = res.data.songs[0].alia;
+        this.song.pic = res.data.songs[0].al.picUrl;
+        this.song.artist = res.data.songs[0].ar[0].name;
+        // console.log(this.song);
+        this.$emit("songSelected", this.song);
+      });
     },
   },
 };

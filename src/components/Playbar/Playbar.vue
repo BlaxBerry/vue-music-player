@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div v-if="song.name">
     <v-card class="d-flex flex-no-wrap align-center" dark>
       <!-- img -->
       <v-avatar class="ma-3" size="70" tile>
-        <v-img src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"></v-img>
+        <v-img :src="song.pic"></v-img>
       </v-avatar>
       <!-- play -->
       <v-card-actions>
@@ -14,10 +14,12 @@
       </v-card-actions>
       <!-- name -->
       <div>
-        <v-card-title class="py-0 pb-4">Song's Name</v-card-title>
-        <v-card-subtitle class="py-0">Album's Name</v-card-subtitle>
+        <v-card-title class="py-0 pb-4">{{ song.name }}</v-card-title>
+        <v-card-subtitle v-if="song.album.length" class="py-0 text-caption">
+          ( {{ song.album[0] + " | " + song.album[1] }} )
+        </v-card-subtitle>
         <v-card-subtitle class="py-0 red--text text--lighten-2">
-          <small>Artist's Name</small>
+          <small>{{ song.artist }}</small>
         </v-card-subtitle>
       </div>
     </v-card>
@@ -30,21 +32,22 @@
 import { Howl } from "howler";
 
 export default {
+  props: ["song"],
   data: () => ({
     isPlay: false,
     sound: {},
   }),
-
-  created() {
-    this.sound = new Howl({
-      src: ["http://www.hochmuth.com/mp3/Boccherini_Concerto_478-1.mp3"],
-      loop: true,
-      html5: true,
-    });
-  },
-
+  
   methods: {
+    init() {
+      this.sound = new Howl({
+        src: [this.song.url],
+        loop: true,
+        html5: true,
+      });
+    },
     play() {
+      this.init();
       this.isPlay = !this.isPlay;
       this.sound.play();
     },
