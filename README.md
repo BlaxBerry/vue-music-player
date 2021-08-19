@@ -1,5 +1,7 @@
 ## vue-music-player 2.0
 
+**SPA** Music Player Applicaton
+
 for personal use only
 
 ### Tech Stacks
@@ -14,10 +16,25 @@ for personal use only
 ---
 
 ### Functions
+- Search page Tab 
+    - song list
+    - song sheets
+        -> sheet Detail
+    - mv list
+
 
 ---
 
 ### Images
+
+**/search**
+
+![](./public/images/search-01.png)
+![](./public/images/search-02.png)
+
+**/detail**
+
+![](./public/images/detail-sheet.png)
 
 ---
 

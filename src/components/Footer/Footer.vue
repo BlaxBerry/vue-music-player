@@ -1,7 +1,7 @@
 <template>
-  <v-footer v-if="$route.name == 'About'" dark padless class="grey--text">
+  <v-footer dark padless class="grey--text">
     <v-card flat tile class="white--text text-center" min-width="100vw">
-      <v-card-text>
+      <v-card-text v-if="$route.name == 'About'">
         <v-btn
           v-for="icon in icons"
           :key="icon"
@@ -15,7 +15,7 @@
         </v-btn>
       </v-card-text>
 
-      <v-card-text class="pt-0">
+      <v-card-text class="pt-0" v-if="$route.name == 'About'">
         front end project web appliaction of music player for personal use only.
         <br />
         Data requested from free online API

@@ -7,21 +7,38 @@
           <v-img :lazy-src="sheet.coverImgUrl" :src="songSelected.pic" />
         </v-avatar>
         <div>
-          <v-card-title class="text-h5 font-weight-black" v-html="sheet.name" />
-          <v-card-subtitle class="py-3" v-text="sheet.description" />
+          <v-card-title
+            class="text-h5 font-weight-black"
+            v-html="songSelected.name ? songSelected.name : sheet.name"
+          />
+          <v-card-subtitle
+            class="py-3"
+            v-text="
+              songSelected.artist ? songSelected.artist : sheet.description
+            "
+          />
           <v-card-subtitle
             class="py-0 pl-4 font-weight-black d-flex align-center"
           >
-            <v-chip
-              v-for="(item, index) in sheet.tags"
-              :key="index"
-              class="mr-2"
-              color="red lighten-2"
-              small
-              text-color="white"
-              >{{ item }}
-            </v-chip>
-            <v-btn v-if="songSelected.url" fab icon height="40px" width="40px">
+            <b v-if="!songSelected.name">
+              <v-chip
+                v-for="(item, index) in sheet.tags"
+                :key="index"
+                class="mr-2"
+                color="red lighten-2"
+                small
+                text-color="white"
+                >{{ item }}
+              </v-chip></b
+            >
+            <v-btn
+              large
+              v-if="songSelected.url"
+              fab
+              icon
+              height="40px"
+              width="40px"
+            >
               <v-icon v-if="!isPlay" @click="play">mdi-play</v-icon>
               <v-icon v-if="isPlay" @click="pause">mdi-pause</v-icon>
             </v-btn>
@@ -78,7 +95,7 @@ export default {
     getSongSelected(data) {
       this.songSelected = data;
       this.isPlay = true;
-      console.log(this.songSelected.url);
+    //   console.log(this.songSelected);
     },
   },
 };
