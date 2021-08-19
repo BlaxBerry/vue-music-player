@@ -134,4 +134,7 @@ export default {
 .alert {
   top: -20px;
 }
+.v-app-bar {
+  overflow: hidden;
+}
 </style>

@@ -3,11 +3,7 @@
     <v-list-item v-for="item in list" :key="item.id" @click="play(item.id)">
       <!-- avatar -->
       <v-list-item-avatar v-if="item" tile size="50" class="mt-5">
-        <v-img
-          :src="item.pic"
-          :lazy-src="item.artists[0].img1v1Url"
-          :alt="item.name"
-        />
+        <v-img :src="item.al ? item.al.picUrl : item.pic" :alt="item.name" />
       </v-list-item-avatar>
       <!-- name -->
       <v-list-item-content class="py-5">
@@ -15,7 +11,7 @@
           <v-list-item-title>
             {{ item.name }}
             <v-chip
-              v-if="item.copyrightId != 0"
+              v-if="item.copyrightId && item.copyrightId != 0"
               x-small
               color="orange"
               text-color="white"
@@ -24,7 +20,7 @@
             </v-chip>
           </v-list-item-title>
           <v-list-item-subtitle
-            v-html="item.artists[0].name"
+            v-html="item.artists ? item.artists[0].name : item.ar[0].name"
             class="red--text text--lighten-2 pt-1"
           />
         </b>
