@@ -9,7 +9,6 @@ for personal use only
 - Scss
 - Vue-Router
 - Vuex
-- Howler.js
 - Axios
 
 ---
