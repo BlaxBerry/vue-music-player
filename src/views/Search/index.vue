@@ -34,7 +34,10 @@
       <v-tab-item>
         <SongLists :list="songList" @songSelected="getSongSelected" />
       </v-tab-item>
-      <v-tab-item>{{ tab }}</v-tab-item>
+      <!-- songsheets -->
+      <v-tab-item>
+        <SongSheets :list="songSheets" />
+      </v-tab-item>
       <v-tab-item>{{ tab }}</v-tab-item>
     </v-tabs-items>
 
@@ -45,14 +48,17 @@
 <script>
 //api
 import { Search } from "@/api/search.js";
+import { GetSongDetail } from "@/api/songDetail.js";
 // components
 import SongLists from "./SongLists.vue";
+import SongSheets from "./SongSheets.vue";
 import Playbar from "@/components/Playbar/Playbar.vue";
 
 export default {
   components: {
     SongLists,
     Playbar,
+    SongSheets,
   },
 
   data() {
@@ -104,11 +110,18 @@ export default {
         type: this.type,
         limit: 10,
       }).then((res) => {
-        // console.log(res.data.result);
+        console.log(res.data.result);
         // 1. song list
         if (res.data.result.songs) {
           this.songList = res.data.result.songs;
           this.count = res.data.result.songCount;
+          // song avatar
+          this.songList.forEach((item) => {
+            GetSongDetail({ ids: item.id }).then((result) => {
+              item.pic = result.data.songs[0].al.picUrl;
+            });
+          });
+          // console.log(this.songList);
           // handle time
           for (let i = 0; i < this.songList.length; i++) {
             let m = parseInt(this.songList[i].duration / 1000 / 60);
@@ -120,7 +133,7 @@ export default {
         }
         // 2. song sheets
         if (res.data.result.playlists) {
-          this.songSheet = res.data.result.playlists;
+          this.songSheets = res.data.result.playlists;
           this.count = res.data.result.playlistCount;
         }
         // 3. mv list

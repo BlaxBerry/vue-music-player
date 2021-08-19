@@ -2,10 +2,11 @@
   <v-list three-line height="80%">
     <v-list-item v-for="item in list" :key="item.id" @click="play(item.id)">
       <!-- avatar -->
-      <v-list-item-avatar tile size="50" class="mt-5">
+      <v-list-item-avatar v-if="item" tile size="50" class="mt-5">
         <v-img
-          src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"
-          alt="item.name"
+          :src="item.pic"
+          :lazy-src="item.artists[0].img1v1Url"
+          :alt="item.name"
         />
       </v-list-item-avatar>
       <!-- name -->
