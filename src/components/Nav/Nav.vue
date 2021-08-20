@@ -31,7 +31,7 @@
       v-model="drawer"
       fixed
       temporary
-      expand-on-hover
+      mini-variant.sync="true"
       width="150"
       dark
     >
