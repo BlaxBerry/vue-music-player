@@ -13,12 +13,14 @@
     </v-card-actions>
     <!-- name -->
     <div>
-      <v-card-title class="py-0 pb-4">{{ song.name }}</v-card-title>
-      <v-card-subtitle v-if="song.album.length" class="py-0 text-caption">
+      <v-card-title class="pb-lg-5 font-weight-bold text-body-1 text-lg-h6">
+        {{ song.name }}
+      </v-card-title>
+      <!-- <v-card-subtitle v-if="song.album.length" class="d-none d-md-flex py-0 text-caption">
         ( {{ song.album[0] + " | " + song.album[1] }} )
-      </v-card-subtitle>
-      <v-card-subtitle class="py-0 red--text text--lighten-2">
-        <small>{{ song.artist }}</small>
+      </v-card-subtitle> -->
+      <v-card-subtitle class="red--text text--lighten-2 text-caption">
+        {{ song.artist }}
       </v-card-subtitle>
     </div>
     <audio :src="song.url" autoplay loop ref="audio"></audio>

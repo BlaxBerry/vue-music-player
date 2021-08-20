@@ -121,15 +121,13 @@ export default {
       if (this.val.trim() == "") {
         this.alert = true;
       } else {
-        console.log(this.$router);
         this.$router.push("/search?q=" + this.val);
-        this.$router.go(0);
+        if (this.$route.name == "Search") {
+          this.$router.go(0);
+        }
       }
     },
   },
-  mounted(){
-    this.search()
-  }
 };
 </script>
 

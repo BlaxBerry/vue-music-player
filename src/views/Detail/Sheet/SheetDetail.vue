@@ -48,6 +48,20 @@
       </div>
     </v-card>
 
+    <!-- list count -->
+    <div v-if="tracksList.length != 0" class="count font-weight-black py-0 pt-4">
+      found
+      <v-chip
+        class="ma-1"
+        x-small
+        color="red lighten-2 "
+        outlined
+      >
+        {{ tracksList.length }}
+      </v-chip>
+      results
+    </div>
+
     <!-- lists -->
     <List :list="tracksList" @songSelected="getSongSelected" />
   </div>
@@ -95,14 +109,14 @@ export default {
     getSongSelected(data) {
       this.songSelected = data;
       this.isPlay = true;
-    //   console.log(this.songSelected);
+      //   console.log(this.songSelected);
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.v-list {
+.count {
   margin-top: 180px;
 }
 .v-card {

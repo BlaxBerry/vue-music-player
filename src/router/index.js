@@ -34,9 +34,14 @@ const routes = [
     component: () => import('../views/MVs/index.vue')
   },
   {
-    path: '/detail',
-    name: 'Detail',
-    component: () => import('../views/Detail/SheetDetail.vue')
+    path: '/detail/sheet',
+    name: 'DetailSheet',
+    component: () => import('../views/Detail/Sheet/SheetDetail.vue')
+  },
+  {
+    path: '/detail/mv',
+    name: 'DetailMV',
+    component: () => import('../views/Detail/MV/MVDetail.vue')
   },
   {
     path: '/about',

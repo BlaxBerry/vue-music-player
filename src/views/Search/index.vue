@@ -30,15 +30,18 @@
     </v-tabs>
     <!-- tab content-->
     <v-tabs-items v-model="tab">
-      <!-- songlists -->
+      <!-- 1. songlists -->
       <v-tab-item>
         <SongLists :list="songList" @songSelected="getSongSelected" />
       </v-tab-item>
-      <!-- songsheets -->
+      <!-- 2. songsheets -->
       <v-tab-item>
         <SongSheets :list="songSheets" />
       </v-tab-item>
-      <v-tab-item>{{ tab }}</v-tab-item>
+      <!-- 3. mvs -->
+      <v-tab-item>
+        <MVs :list="mvList" />
+      </v-tab-item>
     </v-tabs-items>
 
     <Playbar v-if="type == 1" :song="songSelected" />
@@ -52,6 +55,7 @@ import { GetSongDetail } from "@/api/songDetail.js";
 // components
 import SongLists from "./SongLists.vue";
 import SongSheets from "./SongSheets.vue";
+import MVs from "./MVs.vue";
 import Playbar from "@/components/Playbar/Playbar.vue";
 
 export default {
@@ -59,6 +63,7 @@ export default {
     SongLists,
     Playbar,
     SongSheets,
+    MVs,
   },
 
   data() {
@@ -140,6 +145,14 @@ export default {
         if (res.data.result.mvs) {
           this.mvList = res.data.result.mvs;
           this.count = res.data.result.mvCount;
+          // handle time
+          for (let i = 0; i < this.mvList.length; i++) {
+            let m = parseInt(this.mvList[i].duration / 1000 / 60);
+            let s = parseInt((this.mvList[i].duration / 1000) % 60);
+            m = m < 10 ? "0" + m : m;
+            s = s < 10 ? "0" + s : s;
+            this.mvList[i].duration = m + ":" + s;
+          }
         }
       });
     },
