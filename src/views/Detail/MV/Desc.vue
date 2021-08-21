@@ -3,7 +3,9 @@
     <!-- MV info -->
     <div class="mv">
       <!-- 1.  title -->
-      <v-card-title class="text-h4 font-weight-bold">{{ MV.name }}</v-card-title>
+      <v-card-title class="text-h4 font-weight-bold">{{
+        MV.name
+      }}</v-card-title>
 
       <!-- 2. time + playcount -->
       <v-card-subtitle
@@ -29,6 +31,7 @@
       </v-card-subtitle>
 
       <!-- 4. songer info -->
+      <MVSongerInfo :artist="artist" />
 
       <!-- 5. desc -->
       <v-card-text class="py-8">
@@ -39,8 +42,18 @@
 </template>
 
 <script>
+// components
+import MVSongerInfo from "./SongerInfo.vue";
+
 export default {
-  props: ["MV"],
+  props: ["MV", "artist"],
+  components: { MVSongerInfo },
+
+  data() {
+    return {
+      songers: [],
+    };
+  },
 };
 </script>
 

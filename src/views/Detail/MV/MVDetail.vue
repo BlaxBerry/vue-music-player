@@ -2,10 +2,17 @@
   <v-row>
     <!-- left main -->
     <v-col cols="12" md="9" class="pt-4">
-      <!-- video -->
-      <video :src="MVURL" controls></video>
-      <!-- MV Desc -->
-      <MVDesc :MV="MVDetail" :artist="artist"/>
+      <!-- 1. video -->
+      <video
+        :src="MVURL"
+        controls
+        :preload="MVURL"
+        :poster="MVDetail.cover"
+      ></video>
+      <!-- 2. MV Desc -->
+      <MVDesc :MV="MVDetail" :artist="artist" />
+      <!-- 3 -->
+      <Comments :list="comments" />
 
       <!-- recommend bottom -->
       <v-row class="d-md-none d-flex align-center pa-2">
@@ -37,14 +44,17 @@ import { GetMVURL } from "@/api/mvURL.js";
 import { GetMVRecommend } from "@/api/mvRecommend.js";
 import { GetMVDetail } from "@/api/mvDetail.js";
 import { GetArtistInfo } from "@/api/mvArtistInfo.js";
+import { GetMVComments } from "@/api/mvComments.js";
 // components
 import RecommendList from "./RecommendList.vue";
 import MVDesc from "./Desc.vue";
+import Comments from "./Comments.vue";
 
 export default {
   components: {
     RecommendList,
     MVDesc,
+    Comments,
   },
 
   data() {
@@ -52,8 +62,8 @@ export default {
       MVURL: "",
       MVRecommendList: [],
       MVDetail: {},
-      //   artists: [],
-      artist: {},
+      artist: [],
+      comments: {},
     };
   },
 
@@ -81,22 +91,24 @@ export default {
       }).then((res) => {
         this.MVDetail = res.data.data;
         console.log(this.MVDetail);
+        // get artist info
         GetArtistInfo({
           id: this.MVDetail.artistId,
         }).then((result) => {
           this.artist = result.data.artist;
+          // console.log(this.artist);
         });
+      });
 
-        // this.MVDetail 
-        // for (let i = 0; i < res.data.data.artists.length; i++) {
-        //   // get artist info
-        //   GetArtistInfo({
-        //     id: res.data.data.artists[i].id,
-        //   }).then((result) => {
-        //     res.data.data.artists[i] = result.data;
-        //   });
-        // }
-        // this.artists = res.data.data.artists;
+      // get MV Comments
+      GetMVComments({
+        id: this.$route.query.id,
+      }).then((res) => {
+        // console.log(res.data);
+        this.comments = {
+          hotComments: res.data.hotComments,
+          newComments: res.data.comments,
+        };
       });
     },
   },
