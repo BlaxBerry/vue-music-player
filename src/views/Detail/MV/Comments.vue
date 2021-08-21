@@ -1,6 +1,9 @@
 <template>
-  <div v-if="list">
-    <v-card-title class="pb-0 font-weight-black">
+  <div v-if="list.hotComments">
+    <v-card-title
+      v-if="list.hotComments.length != 0"
+      class="pb-0 font-weight-black"
+    >
       Hot Comments
       <span v-if="list.hotComments">({{ list.hotComments.length }})</span>
     </v-card-title>
@@ -41,7 +44,7 @@ export default {
       let y = date.getFullYear();
       let mon = date.getMonth() + 1;
       let d = date.getDate();
-      let h = date.getHours()
+      let h = date.getHours();
       let m = date.getMinutes();
       let s = date.getSeconds();
       mon = mon < 10 ? "0" + mon : mon;
