@@ -2,12 +2,11 @@
   <v-list three-line height="80%">
     <v-list-item v-for="item in list" :key="item.id" @click="play(item.id)">
       <!-- avatar -->
-      <v-list-item-avatar v-if="item" tile size="50" class="mt-5">
-        <v-img
-          lazy-src="https://i.pinimg.com/474x/d9/c1/cc/d9c1cce84ecc8be21c101d56d20a9427.jpg"
-          :src="item.al ? item.al.picUrl : item.pic"
-          :alt="item.name"
-        />
+      <v-list-item-avatar v-if="item.pic" tile size="50" class="mt-5">
+        <v-img :src="item.pic" :alt="item.name" />
+      </v-list-item-avatar>
+      <v-list-item-avatar v-if="item.al" tile size="50" class="mt-5">
+        <v-img :src="item.al.picUrl" :alt="item.name" />
       </v-list-item-avatar>
       <!-- name -->
       <v-list-item-content class="py-5">

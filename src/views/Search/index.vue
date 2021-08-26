@@ -3,7 +3,7 @@
     <!-- result name + count -->
     <p class="text-caption my-0">
       Search
-      <span class="mx-1 text-h6 font-weight-bold">{{ $route.query.q }}</span>
+      <span class="mx-1 text-h6 font-weight-bold">{{ keywords }}</span>
       found
       <v-chip
         class="ma-1 font-weight-black"
@@ -86,6 +86,9 @@ export default {
       count: 0,
 
       songSelected: {},
+
+      // default search value
+      keywords: "蜜雪冰城",
     };
   },
 
@@ -109,13 +112,16 @@ export default {
     },
 
     init() {
+      if (this.$route.query.q) {
+        this.keywords = this.$route.query.q;
+      }
       // search list
       Search({
-        keywords: this.$route.query.q,
+        keywords: this.keywords,
         type: this.type,
         limit: 10,
       }).then((res) => {
-        console.log(res.data.result);
+        // console.log(res.data.result);
         // 1. song list
         if (res.data.result.songs) {
           this.songList = res.data.result.songs;
