@@ -32,7 +32,7 @@
     <v-tabs-items v-model="tab">
       <!-- 1. songlists -->
       <v-tab-item>
-        <SongLists :list="songList" @songSelected="getSongSelected" />
+        <SongLists :list="songList" />
       </v-tab-item>
       <!-- 2. songsheets -->
       <v-tab-item>
@@ -43,8 +43,6 @@
         <MVs :list="mvList" />
       </v-tab-item>
     </v-tabs-items>
-
-    <Playbar v-if="type == 1" :song="songSelected" />
   </div>
 </template>
 
@@ -56,12 +54,10 @@ import { GetSongDetail } from "@/api/songDetail.js";
 import SongLists from "./SongLists.vue";
 import SongSheets from "./SongSheets.vue";
 import MVs from "./MVs.vue";
-import Playbar from "@/components/Playbar/Playbar.vue";
 
 export default {
   components: {
     SongLists,
-    Playbar,
     SongSheets,
     MVs,
   },
@@ -84,8 +80,6 @@ export default {
       // mvs
       mvList: [],
       count: 0,
-
-      songSelected: {},
 
       // default search value
       keywords: "蜜雪冰城",
@@ -161,11 +155,6 @@ export default {
           }
         }
       });
-    },
-
-    getSongSelected(data) {
-      // console.log(data);
-      this.songSelected = data;
     },
   },
 

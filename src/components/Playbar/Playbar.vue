@@ -1,8 +1,8 @@
 <template>
-  <v-card v-if="song.name" class="d-flex flex-no-wrap align-center" dark>
+  <v-card class="d-flex flex-no-wrap align-center" dark>
     <!-- img -->
     <v-avatar class="ma-3" size="70" tile>
-      <v-img :src="song.pic"></v-img>
+      <v-img :src="$store.state.song.pic"></v-img>
     </v-avatar>
     <!-- play + pause btn-->
     <v-card-actions>
@@ -14,36 +14,35 @@
     <!-- name -->
     <div>
       <v-card-title class="pb-lg-5 font-weight-bold text-body-1 text-lg-h6">
-        {{ song.name }}
+        {{ $store.state.song.name }}
       </v-card-title>
       <!-- <v-card-subtitle v-if="song.album.length" class="d-none d-md-flex py-0 text-caption">
         ( {{ song.album[0] + " | " + song.album[1] }} )
       </v-card-subtitle> -->
       <v-card-subtitle class="red--text text--lighten-2 text-caption">
-        {{ song.artist }}
+        {{ $store.state.song.artist }}
       </v-card-subtitle>
     </div>
-    <audio :src="song.url" autoplay loop ref="audio"></audio>
+    <audio :src="$store.state.url" autoplay loop ref="audio" />
   </v-card>
 </template>
 
 <script>
 export default {
-  props: ["song"],
   data: () => ({
     isPlay: true,
   }),
 
   methods: {
     play() {
-      this.isPlay = !this.isPlay;
+      this.isPlay = true;
       this.$refs.audio.play();
     },
     pause() {
-      this.isPlay = !this.isPlay;
+      this.isPlay = false;
       this.$refs.audio.pause();
     },
-  },
+  }
 };
 </script>
 
