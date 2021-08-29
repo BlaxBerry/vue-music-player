@@ -9,7 +9,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     song: {},
-    url: ''
+    url: '',
+    hidePlayBar: true
   },
   mutations: {
     getSongURL(state, data) {
@@ -20,7 +21,9 @@ export default new Vuex.Store({
       state.song.album = data.alia;
       state.song.pic = data.al.picUrl;
       state.song.artist = data.ar[0].name;
-      // console.log(state.song);
+    },
+    handleHidePlayBar(state, data) {
+      state.searchTabType = data
     }
   },
   actions: {

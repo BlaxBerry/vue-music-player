@@ -57,10 +57,6 @@ export default {
        this.$store.dispatch('getSongSelected',id)
     },
   },
-  mounted(){
-    this.play(1855080368)
-    // console.log(this.list);
-  }
 };
 </script>
 

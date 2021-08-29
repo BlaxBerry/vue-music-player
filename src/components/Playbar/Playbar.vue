@@ -1,8 +1,12 @@
 <template>
-  <v-card class="d-flex flex-no-wrap align-center" dark>
+  <v-card
+    v-if="!$route.meta.hidePlaybar && url != ''"
+    class="d-flex flex-no-wrap align-center"
+    dark
+  >
     <!-- img -->
     <v-avatar class="ma-3" size="70" tile>
-      <v-img :src="$store.state.song.pic"></v-img>
+      <v-img :src="song.pic" />
     </v-avatar>
     <!-- play + pause btn-->
     <v-card-actions>
@@ -14,24 +18,30 @@
     <!-- name -->
     <div>
       <v-card-title class="pb-lg-5 font-weight-bold text-body-1 text-lg-h6">
-        {{ $store.state.song.name }}
+        {{ song.name }}
       </v-card-title>
       <!-- <v-card-subtitle v-if="song.album.length" class="d-none d-md-flex py-0 text-caption">
         ( {{ song.album[0] + " | " + song.album[1] }} )
       </v-card-subtitle> -->
       <v-card-subtitle class="red--text text--lighten-2 text-caption">
-        {{ $store.state.song.artist }}
+        {{ song.artist }}
       </v-card-subtitle>
     </div>
-    <audio :src="$store.state.url" autoplay loop ref="audio" />
+    <audio :src="url" autoplay loop ref="audio" />
   </v-card>
 </template>
 
 <script>
+// vuex
+import { mapState } from "vuex";
+
 export default {
   data: () => ({
     isPlay: true,
   }),
+  computed: {
+    ...mapState(["url", "song"]),
+  },
 
   methods: {
     play() {
@@ -42,7 +52,7 @@ export default {
       this.isPlay = false;
       this.$refs.audio.pause();
     },
-  }
+  },
 };
 </script>
 
