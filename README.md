@@ -33,7 +33,7 @@ for personal use only
 ![](./public/images/search-02.png)
 
 **/detail**
-
+![](./public/images/detail-mv.png)
 ![](./public/images/detail-sheet.png)
 
 **Mobile**
