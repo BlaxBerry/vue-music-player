@@ -1,15 +1,18 @@
 <template>
   <v-app>
-    <!-- topNav + leftNavDrawer -->
-    <Nav />
+    <!-- top nav -->
+    <TopNav />
+
+    <!-- side nav -->
+    <SideNav />
+
     <!-- main -->
     <v-main>
       <v-container fluid>
-        <router-view />
+        <router-view></router-view>
       </v-container>
     </v-main>
-    <!-- audio -->
-    <PlayBar/>
+
     <!-- footer -->
     <Footer />
   </v-app>
@@ -17,17 +20,13 @@
 
 <script>
 // components
-import Nav from "@/components/Nav/Nav.vue";
-import Footer from "@/components/Footer/Footer.vue";
-import PlayBar from "@/components/Playbar/Playbar.vue"
+import TopNav from "./components/Nav/TopNav.vue";
+import SideNav from "./components/Nav/SideNav.vue";
+import Footer from "./components/Footer/index.vue";
 
 export default {
   name: "App",
-  components: {
-    Nav,
-    PlayBar,
-    Footer,
-  },
+  components: { TopNav, SideNav, Footer },
 
   data: () => ({}),
 };

@@ -1,5 +1,5 @@
 <template>
-  <div>MVs</div>
+  <div></div>
 </template>
 
 <script>

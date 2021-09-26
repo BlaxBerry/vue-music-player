@@ -1,5 +1,7 @@
 <template>
-  <div>Lists</div>
+  <div>
+      hot
+  </div>
 </template>
 
 <script>

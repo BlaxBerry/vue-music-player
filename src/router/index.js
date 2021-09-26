@@ -1,77 +1,62 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home/Home.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    component: Home
-  },
-  {
-    path: '/home',
-    name: 'Home',
-    component: Home,
-    meta: {
-      hidePlaybar: true
-    }
+    component: () => import('../views/Search/index.vue'),
   },
   {
     path: '/search',
     name: 'Search',
     component: () => import('../views/Search/index.vue'),
-    meta: {
-      hidePlaybar: false
-    }
   },
   {
-    path: '/lists',
-    name: 'Lists',
-    component: () => import('../views/SongLists/index.vue'),
-    meta: {
-      hidePlaybar: true
-    }
+    path: '/hots',
+    name: 'Hots',
+    component: () => import('../views/Hots/index.vue'),
   },
   {
-    path: '/sheets',
-    name: 'Sheets',
-    component: () => import('../views/SongSheets/index.vue'),
-    meta: {
-      hidePlaybar: true
-    }
-  }, {
+    path: '/songs',
+    name: 'Songs',
+    component: () => import('../views/Songs/index.vue'),
+  },
+  {
     path: '/mvs',
     name: 'MVs',
     component: () => import('../views/MVs/index.vue'),
-    meta: {
-      hidePlaybar: true
-    }
   },
   {
-    path: '/detail/sheet',
-    name: 'DetailSheet',
-    component: () => import('../views/Detail/Sheet/SheetDetail.vue'),
-    meta: {
-      hidePlaybar: true
-    }
+    path: '/albums',
+    name: 'Albums',
+    component: () => import('../views/Albums/index.vue'),
   },
-  {
-    path: '/detail/mv',
-    name: 'DetailMV',
-    component: () => import('../views/Detail/MV/MVDetail.vue'),
-    meta: {
-      hidePlaybar: true
-    }
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/About/index.vue'),
-    meta: {
-      hidePlaybar: true
-    }
-  },
+  // {
+  //   path: '/detail/sheet',
+  //   name: 'DetailSheet',
+  //   component: () => import('../views/Detail/Sheet/SheetDetail.vue'),
+  //   meta: {
+  //     hidePlaybar: true
+  //   }
+  // },
+  // {
+  //   path: '/detail/mv',
+  //   name: 'DetailMV',
+  //   component: () => import('../views/Detail/MV/MVDetail.vue'),
+  //   meta: {
+  //     hidePlaybar: true
+  //   }
+  // },
+  // {
+  //   path: '/about',
+  //   name: 'About',
+  //   component: () => import('../views/About/index.vue'),
+  //   meta: {
+  //     hidePlaybar: true
+  //   }
+  // },
 ]
 
 const router = new VueRouter({
