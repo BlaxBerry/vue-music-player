@@ -3,14 +3,16 @@ import Vuex from 'vuex'
 // apis
 import Search from '../api/Search/search'
 import GetSongPic from '../api/Detail/Song/getSongPic'
+import GetSongUrl from '../api/Detail/Song/getSongURL'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     appShowSideNav: false,
+    appShowFooterPlayer: false,
     searchResultList: [],
-
+    songSelected: {},
   },
 
   mutations: {
@@ -20,8 +22,12 @@ export default new Vuex.Store({
     saveSearchResultList(state, params) {
       state.searchResultList = params
     },
-
+    saveSongSelected(state, params) {
+      state.songSelected = params
+      state.appShowFooterPlayer = true
+    }
   },
+
   actions: {
     async getSearchResultList(context, params) {
       let { songs } = await Search(params)
@@ -35,10 +41,13 @@ export default new Vuex.Store({
         item.pic = pic.songs[0].al.picUrl
       })
       context.commit('saveSearchResultList', songs)
-      // // if it's song list, get song list pic
-      // if (params.type == 1) {
-      
-      // }
+    },
+    async getSongUrl(context, params) {
+      let { id } = params
+      let res = await GetSongUrl({ id })
+      let url = res.data[0].url
+      params.url = url
+      context.commit('saveSongSelected', params)
     }
   },
   modules: {

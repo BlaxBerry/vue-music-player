@@ -6,11 +6,11 @@
       cols="4"
       lg="7"
     >
-      <div class="px-4 pb-4">
+      <div class="px-4 pb-4 d-flex flex-column align-center">
         <v-img :src="songSelected.pic" max-width="350" />
         <!-- name -->
         <v-card-title
-          class="text-h5 font-weight-black"
+          class="text-h5 font-weight-black justify-center"
           v-text="songSelected.name"
         />
         <!-- album -->
@@ -61,7 +61,7 @@
           rounded
           @click="selectSong(item)"
         >
-          <div class="d-flex flex-no-wrap justify-space-between">
+          <div class="d-flex flex-no-wrap justify-space-between align-center">
             <div class="d-flex flex-column flex-no-wrap justify-space-between">
               <!-- name -->
               <v-card-title
@@ -74,7 +74,7 @@
                 v-text="item.album.name"
               />
               <!-- artists -->
-              <v-card-subtitle class="pt-0">
+              <v-card-subtitle class="py-0">
                 <span
                   v-for="(artist, i) in item.artists"
                   :key="i"
@@ -82,6 +82,15 @@
                   v-text="artist.name"
                 />
               </v-card-subtitle>
+              <!-- tool btns  -->
+              <div>
+                <v-btn fab icon right @click="playSong(item)">
+                  <v-icon>mdi-play</v-icon>
+                </v-btn>
+                <v-btn icon color="red" @click="addLove">
+                  <v-icon>mdi-heart</v-icon>
+                </v-btn>
+              </div>
             </div>
             <v-avatar class="pa-1" size="125" tile>
               <v-img :src="item.pic" />
@@ -117,17 +126,9 @@ export default {
       handler(newVal) {
         // get the default first item of list
         if (newVal) {
-          let name = newVal[0].name;
+          let { name, artists, pic, id, comments } = newVal[0];
           let album = newVal[0].album.name;
-          let artists = newVal[0].artists;
-          let pic = newVal[0].pic;
-          this.songSelected = {
-            name,
-            album,
-            artists,
-            pic,
-            comments: [],
-          };
+          this.songSelected = { id, name, album, artists, pic, comments };
         }
       },
       immediate: true,
@@ -142,21 +143,27 @@ export default {
   methods: {
     async selectSong(item) {
       // 1. get song selected detail
-      let name = item.name;
+      let { name, artists, pic, id } = item;
       let album = item.album.name;
-      let artists = item.artists;
-      let pic = item.pic;
-      this.songSelected = {
-        name,
-        album,
-        artists,
-        pic,
-        comments: [],
-      };
+      this.songSelected = { id, name, album, artists, pic, comments: [] };
       // 2. get song comments
-      let id = item.id;
       let res = await GetSongComments({ id });
       this.songSelected.comments = res.hotComments;
+    },
+
+    playSong(item) {
+      // get song url and save in vuex
+      let { name, artists, pic, id } = item;
+      let params = { name, artists, pic, id };
+      this.$store.dispatch("getSongUrl", params);
+    },
+
+    addLove() {
+      // save localstorage
+      localStorage.setItem(
+        `musicplayer--${this.songSelected.name}`,
+        JSON.stringify(this.songSelected)
+      );
     },
   },
 };
@@ -173,6 +180,6 @@ export default {
 
 .comments-list {
   width: 100%;
-  height: 30vh !important;
+  height: 40vh !important;
 }
 </style>

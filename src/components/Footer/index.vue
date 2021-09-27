@@ -1,10 +1,73 @@
 <template>
-  <v-footer padless app>
-    <v-row justify="center" no-gutters>
-      <v-col class="lighten-2 py-2 text-center" cols="12">
-        {{ new Date().getFullYear() }}
-        — <strong>BlaxBerry</strong>
-      </v-col>
-    </v-row>
+  <v-footer
+    padless
+    app
+    class="justify-center"
+    v-if="$store.state.appShowFooterPlayer"
+  >
+    <aplayer
+      :music="music"
+      repeat="repeat-on"
+      autoplay
+      class="pa-2 px-md-6 px-lg-15"
+    />
   </v-footer>
 </template>
+
+<script>
+import { mapState } from "vuex";
+import Aplayer from "vue-aplayer";
+Aplayer.disableVersionBadge = true;
+
+export default {
+  components: { Aplayer },
+
+  data() {
+    return {
+      music: {},
+    };
+  },
+
+  computed: {
+    ...mapState(["songSelected"]),
+  },
+
+  watch: {
+    songSelected: function(newVal) {
+      let { name, artists, pic, url } = newVal;
+      let artistsArr = artists.map((item) => item.name);
+      let artistsStr = "";
+      artistsArr.forEach((item) => (artistsStr += item + " "));
+      this.music = {
+        title: name,
+        artist: artistsStr,
+        src: url,
+        pic,
+        theme: "#D32F2F",
+      };
+    },
+  },
+};
+</script>
+
+<style lang="scss">
+.aplayer {
+  background-color: transparent !important;
+  width: 100% !important;
+  .aplayer-info {
+    .aplayer-title {
+      color: #d32f2f;
+      font-weight: 700;
+    }
+    .aplayer-author {
+      color: #9e9e9e;
+    }
+  }
+  .aplayer-controller {
+    margin-bottom: 0.5rem;
+    .aplayer-ptime {
+      color: #d32f2f;
+    }
+  }
+}
+</style>

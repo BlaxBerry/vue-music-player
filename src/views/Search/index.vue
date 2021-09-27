@@ -29,7 +29,7 @@
     <Loading v-if="!searchResultList.length" />
 
     <!-- pages -->
-    <div class="text-center pt-3" v-if="searchResultList.length">
+    <div class="text-center py-0 mt-2" v-if="searchResultList.length">
       <v-pagination v-model="searchPage" :length="4" circle color="red" />
     </div>
   </div>
