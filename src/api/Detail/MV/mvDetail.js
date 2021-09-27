@@ -1,4 +1,4 @@
-import instance from './request'
+import instance from '../../request'
 
 /*  mvid  */  
 

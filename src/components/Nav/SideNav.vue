@@ -1,10 +1,5 @@
 <template>
-  <v-navigation-drawer
-    dark
-    absolute
-    temporary
-    v-model="$store.state.appShowSideNav"
-  >
+  <v-navigation-drawer absolute temporary v-model="$store.state.appShowSideNav">
     <v-list nav>
       <v-list-item-group>
         <!-- top title -->
@@ -51,5 +46,3 @@ export default {
   }),
 };
 </script>
-
-<style></style>

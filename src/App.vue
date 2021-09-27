@@ -29,6 +29,11 @@ export default {
   components: { TopNav, SideNav, Footer },
 
   data: () => ({}),
+
+  mounted() {
+    // dark theme
+    this.$vuetify.theme.dark = true;
+  },
 };
 </script>
 

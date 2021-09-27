@@ -1,4 +1,4 @@
-import instance from './request'
+import instance from '../request'
 
 /*
 keywords:
@@ -7,8 +7,10 @@ limit:(default 30)
 offset:((page-1)*limit)
 */
 
-export const Search = (params) => instance({
+const Search = (params) => instance({
     method: 'GET',
     url: '/search',
     params
 })
+
+export default Search
