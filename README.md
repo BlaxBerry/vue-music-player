@@ -28,7 +28,11 @@
 ![](./public/images/PC-search-02.png)
 ![](./public/images/PC-search-03.png)
 
+**/favoutites**
 
+![](./public/images/PC-hot-01.png)
+![](./public/images/PC-hot-02.png)
+![](./public/images/PC-hot-03.png)
 
 ---
 
@@ -40,6 +44,10 @@
 ![](./public/images/Mobile-search-02.png)
 ![](./public/images/Mobile-search-04.png)
 
+**/favoutites**
+
+![](./public/images/Mobile-hot-01.png)
+![](./public/images/Mobile-hot-02.png)
 
 
 

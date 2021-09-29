@@ -9,7 +9,7 @@
       :music="music"
       repeat="repeat-on"
       autoplay
-      class="pa-2 px-md-6 px-lg-15"
+      class="pa-2 px-md-6 px-lg-10"
     />
   </v-footer>
 </template>

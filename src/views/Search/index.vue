@@ -5,7 +5,7 @@
       <v-tab
         v-for="item in ['Songs', 'Albums', 'Mvs']"
         :key="item"
-        class="mytext-caption text-sm-body-2 text-md-body-1"
+        class="text--body-2 text-md-body-1 font-weight-black"
         >{{ item }}
       </v-tab>
 

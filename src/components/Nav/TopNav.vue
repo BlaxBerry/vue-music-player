@@ -74,7 +74,7 @@ export default {
   data() {
     return {
       isDarkTheme: true,
-      searchVal: "",
+      searchVal: "Sia",
       isShowAlertMessage: false,
     };
   },
@@ -108,6 +108,9 @@ export default {
       // 2. go to Search view
       this.$router.push("/search?keyword=" + this.searchVal);
     },
+  },
+  created() {
+    this.goSearch();
   },
 };
 </script>

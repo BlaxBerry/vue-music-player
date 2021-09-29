@@ -87,7 +87,7 @@
                 <v-btn fab icon right @click="playSong(item)">
                   <v-icon>mdi-play</v-icon>
                 </v-btn>
-                <v-btn icon color="red" @click="addLove">
+                <v-btn icon color="red" @click="addLove(item)">
                   <v-icon>mdi-heart</v-icon>
                 </v-btn>
               </div>
@@ -105,6 +105,8 @@
 <script>
 // api
 import GetSongComments from "../../api/Detail/Song/getSongComment";
+// utils
+import saveLocalstorage from "../../utils/saveLocalstorage";
 
 export default {
   props: ["songList"],
@@ -158,12 +160,13 @@ export default {
       this.$store.dispatch("getSongUrl", params);
     },
 
-    addLove() {
+    addLove(item) {
       // save localstorage
-      localStorage.setItem(
-        `musicplayer--${this.songSelected.name}`,
-        JSON.stringify(this.songSelected)
-      );
+      let { name, artists, pic, id } = item;
+      let album = item.album.name;
+      let comments = this.songSelected.comments;
+      let songSelected = { id, name, album, artists, pic, comments };
+      saveLocalstorage(songSelected);
     },
   },
 };

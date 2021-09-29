@@ -24,7 +24,7 @@
           :to="item.to"
         >
           <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon :color="item.color">{{ item.icon }}</v-icon>
           </v-list-item-icon>
           <v-list-item-title v-text="item.name" />
         </v-list-item>
@@ -37,7 +37,7 @@
 export default {
   data: () => ({
     sideNavItems: [
-      { name: "Hot Recommend", icon: "mdi-home", to: "/hots" },
+      { name: "Favourites", icon: "mdi-heart", to: "/hots",color:'red darken-2' },
       { name: "Search", icon: "mdi-magnify", to: "/search" },
       { name: "Songs", icon: "mdi-playlist-music", to: "/songs" },
       { name: "MVs", icon: "mdi-movie-open", to: "/mvs" },
