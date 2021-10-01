@@ -6,13 +6,24 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    appShowSideNav: false
+    toolsHandlers: {
+      SlidNavagation: {
+        isShowMaskLeftSlide: false,
+        isShowMaskRightSlide: false
+      }
+    }
 
   },
   mutations: {
-    showAppSideNav(state) {
-      state.appShowSideNav = true
-    }
+    showMaskLeftSlideNav(state) {
+      state.toolsHandlers.SlidNavagation.isShowMaskLeftSlide = true
+    },
+    showMaskRightSlideNav(state) {
+      state.toolsHandlers.SlidNavagation.isShowMaskRightSlide = true
+    },
+    closeMaskLeftSlideNav(state) {
+      state.toolsHandlers.SlidNavagation.isShowMaskRightSlide = false
+    },
   },
   actions: {
 
