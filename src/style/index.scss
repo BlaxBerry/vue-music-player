@@ -3,3 +3,25 @@
 img {
   width: 100%;
 }
+
+.aplayer {
+  background-color: transparent !important;
+  width: 100% !important;
+  .aplayer-info {
+    font-weight: 700;
+    .aplayer-title {
+      color: #9e9e9e !important;
+      font-size: 1rem !important;
+      margin-right: 0.5rem;
+    }
+    .aplayer-author {
+      color: #d32f2f !important;
+    }
+  }
+  .aplayer-controller {
+    margin-bottom: 0.5rem;
+    .aplayer-ptime {
+      color: #d32f2f;
+    }
+  }
+}

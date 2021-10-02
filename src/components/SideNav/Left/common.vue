@@ -36,24 +36,12 @@
 </template>
 
 <script>
+// items
+import { sideNavItems } from "../../../assets/data/Navs/SideNavLeft";
+
 export default {
   data() {
-    return {
-      sideNavItems: [
-        {
-          name: "Favourites",
-          icon: "mdi-heart",
-          to: "/hots",
-          color: "red darken-2",
-        },
-        { name: "Search", icon: "mdi-magnify", to: "/search" },
-        { name: "Songs", icon: "mdi-playlist-music", to: "/songs" },
-        { name: "MVs", icon: "mdi-movie-open", to: "/mvs" },
-        { name: "Albums", icon: "mdi-music-box-multiple", to: "/albums" },
-      ],
-    };
+    return { sideNavItems };
   },
 };
 </script>
-
-<style></style>

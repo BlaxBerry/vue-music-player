@@ -1,15 +1,22 @@
 <template>
   <aplayer
-    class="pa-2 px-md-6 px-lg-10"
-    :music="music"
+    v-if="songSelected.url"
+    class="px-md-6 px-lg-10"
+    :music="{
+      title: songSelected.name,
+      src: songSelected.url,
+      pic: songSelected.pic,
+      artist: songSelected.artists.map((e) => e.name).join(' & '),
+      theme: '#D32F2F',
+    }"
     repeat="repeat-on"
     :mutex="false"
-    autoplay
+    :autoplay="true"
   />
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 import Aplayer from "vue-aplayer";
 Aplayer.disableVersionBadge = true;
 
@@ -21,23 +28,35 @@ export default {
     };
   },
   computed: {
-    ...mapState(["songSelected"]),
+    ...mapGetters(["songSelected", "searchResultSongList"]),
   },
-  
-  watch: {
-    songSelected: function(newVal) {
-      let { name, artists, pic, url } = newVal;
-      let artistsArr = artists.map((item) => item.name);
-      let artistsStr = "";
-      artistsArr.forEach((item) => (artistsStr += item + " "));
-      this.music = {
-        title: name,
-        artist: artistsStr,
-        src: url,
-        pic,
-        theme: "#D32F2F",
-      };
-    },
-  },
+
+  // watch: {
+  //   songSelected: function(newVal) {
+  //     let { name, pic, url } = newVal;
+  //     let artist = newVal.artists.map((item) => item.name + "").join(' & ');
+  //     this.music = {
+  //       title: name,
+  //       src: url,
+  //       pic,
+  //       artist,
+  //       theme: "#D32F2F",
+  //     };
+  //     this.music = newVal;
+  //   },
+  //   immediate: true,
+  // },
+  // created() {
+  //   // this.music = this.searchResultSongList[0];
+  //   let { name, pic, url } = this.searchResultSongList[0];
+  //   let artist = this.searchResultSongList[0].artists.map((item) => item.name + "").toString();
+  //   this.music = {
+  //     title: name,
+  //     src: url,
+  //     pic,
+  //     artist,
+  //     theme: "#D32F2F",
+  //   };
+  // },
 };
 </script>
