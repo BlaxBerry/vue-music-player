@@ -1,6 +1,17 @@
 <template>
   <div>
-    <v-list dense>
+    <!-- title -->
+    <div v-if="details.albumDetails" class="pb-1">
+      <h4>{{ details.albumDetails.name }}</h4>
+      <i  
+        v-if="details.albumDetails.tracks" 
+        class="text-body-1 font-weight-black red--text text--darken-2"
+      >
+        {{ details.albumDetails.tracks.length }} Tracks
+      </i>
+    </div>
+    <!-- list -->
+    <v-list dense id="common-scrollContent" class="pt-0">
       <v-list-item
         v-for="item in details.albumDetails.tracks"
         :key="item.id"
@@ -76,6 +87,8 @@
 
 <script>
 import { mapState } from "vuex";
+// utils
+import saveLocalstorage from "../../../utils/localStorage/saveLocalstorage";
 // api
 import getSongURL from "../../../api/Detail/Song/getSongURL";
 
@@ -95,6 +108,7 @@ export default {
     async playSong(item) {
       let { name, id, fee, dt } = item;
       let pic = item.al.picUrl;
+      // 1. get song url
       let { data } = await getSongURL({ id });
       let url = data[0].url;
       let album = {
@@ -108,8 +122,6 @@ export default {
           id: e.id,
         };
       });
-      // 1. get song url
-      this.$store.dispatch("getAlbumDetails", id);
       // 2. save as song selected in vuex
       let params = {
         name,
@@ -124,11 +136,17 @@ export default {
       this.$store.commit("saveSongSelected", params);
     },
     goCheckMV(id) {
-      console.log(id);
+      this.$router.push("/mv?id=" + id);
     },
-    addToFavourite() {},
+    addToFavourite() {
+      if (this.$store.getters.songSelected == {}) return;
+      saveLocalstorage(
+        this.$store.getters.songSelected,
+        "MusicPlayer-Favourites-Songs",
+        "Song"
+      );
+    },
   },
 };
 </script>
 
-<style></style>

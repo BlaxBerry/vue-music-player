@@ -34,33 +34,24 @@ const routes = [
     component: () => import('../views/MVs/index.vue'),
   },
   {
+    path: '/mv',
+    name: 'MV',
+    component: () => import('../views/Detail/DetailMV/index.vue'),
+  },
+  {
     path: '/albums',
     name: 'Albums',
     component: () => import('../views/Albums/index.vue'),
   },
-  // {
-  //   path: '/detail/sheet',
-  //   name: 'DetailSheet',
-  //   component: () => import('../views/Detail/Sheet/SheetDetail.vue'),
-  //   meta: {
-  //     hidePlaybar: true
-  //   }
-  // },
-  // {
-  //   path: '/detail/mv',
-  //   name: 'DetailMV',
-  //   component: () => import('../views/Detail/MV/MVDetail.vue'),
-  //   meta: {
-  //     hidePlaybar: true
-  //   }
-  // },
+  {
+    path: '/album',
+    name: 'Album',
+    component: () => import('../views/Detail/DetailAlbum/index.vue'),
+  },
   // {
   //   path: '/about',
   //   name: 'About',
   //   component: () => import('../views/About/index.vue'),
-  //   meta: {
-  //     hidePlaybar: true
-  //   }
   // },
 ]
 

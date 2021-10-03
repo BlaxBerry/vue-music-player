@@ -10,7 +10,7 @@
     <!-- main -->
     <v-main>
       <v-container fluid class="pa-0">
-        <router-view style="margin-bottom:70px"></router-view>
+        <router-view style="padding-bottom:70px"></router-view>
         <MaskRight style="z-index:99"/>
         <!-- player -->
         <v-footer app style="z-index:10">

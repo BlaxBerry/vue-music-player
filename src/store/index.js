@@ -16,6 +16,7 @@ export default new Vuex.Store({
         isShowMaskRightSlide: false
       }
     },
+    searchType: 1,
     searchResult: {
       list: {
         songs: [],
@@ -64,6 +65,9 @@ export default new Vuex.Store({
     saveSearchResult(state, params) {
       state.searchResult = params
     },
+    saveSearchType(state, params) {
+      state.searchType = params
+    },
     // save song selected
     saveSongSelected(state, params) {
       state.selectedItem.song = params
@@ -80,6 +84,7 @@ export default new Vuex.Store({
   actions: {
     // get request search result in Search View
     async search(context, params) {
+      // console.log(params);
       let res = await searchList(params)
       let result = {
         list: {
@@ -108,12 +113,6 @@ export default new Vuex.Store({
       }
       // albums
       if (params.type == 1000) {
-        // res.playlists.forEach(async item => {
-        //   let { playlist } = await getSheetDetail({ id: item.id })
-        //   item.tags = playlist.tags
-        //   item.updateTime = playlist.updateTime
-        //   item.tracks = playlist.tracks
-        // })
         result.count = res.playlistCount
         result.hasMore = res.hasMore
         result.list.albums = res.playlists
@@ -123,15 +122,15 @@ export default new Vuex.Store({
         result.count = res.mvCount
         result.list.mvs = res.mvs
       }
+      // console.log(result);
       context.commit('saveSearchResult', result)
     },
     // get album Details
     async getAlbumDetails(context, params) {
+      console.log(params);
       let { playlist } = await getSheetDetail({ id: params })
-      // let { name, description, creator, tags, tracks, updateTime } = playlist
-      // playlist = { name, description, creator, tags, tracks, updateTime }
       context.commit('saveAlbumDetails', playlist)
-    }
+    },
   },
   modules: {
   }

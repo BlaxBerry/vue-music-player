@@ -9,7 +9,7 @@
     >
       <v-hover>
         <template v-slot:default="{ hover }">
-          <v-card @click="check(item)">
+          <v-card @click="checkRightList(item)">
             <v-img
               lazy-src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"
               :src="item.coverImgUrl"
@@ -22,10 +22,14 @@
                 color="black"
                 class="justify-start justify-sm-center align-end align-sm-center"
               >
-                <h3 class="d-sm-none pa-2 font-weight-black">
+                <h4 class="pa-2 font-weight-black">
                   {{ item.name }}
-                </h3>
-                <v-btn rounded class="red darken-2" @click="goDetail(item.id)">
+                </h4>
+                <v-btn
+                  rounded
+                  class="d-sm-none red darken-2"
+                  @click="goDetail(item.id)"
+                >
                   Check More
                 </v-btn>
               </v-overlay>
@@ -40,15 +44,7 @@
 <script>
 export default {
   methods: {
-    check(item) {
-      // let { name, id, description, creator, playCount, tags, tracks, updateTime } = item;
-      // creator = {
-      //   nickname: creator.nickname,
-      //   avatar: creator.avatarUrl,
-      // };
-      // let pic = item.coverImgUrl;
-      // let params = { name, id, description, pic, creator, playCount, tags, tracks, updateTime };
-      // this.$store.commit("saveAlbumSelected", params);
+    checkRightList(item) {
       this.$store.dispatch("getAlbumDetails", item.id);
     },
     goDetail(id) {

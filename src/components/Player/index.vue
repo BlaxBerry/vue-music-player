@@ -12,6 +12,8 @@
     repeat="repeat-on"
     :mutex="false"
     :autoplay="true"
+    :onError="showError"
+    :onEmptied="showError"
   />
 </template>
 
@@ -29,6 +31,12 @@ export default {
   },
   computed: {
     ...mapGetters(["songSelected", "searchResultSongList"]),
+  },
+
+  methods: {
+    showError() {
+      alert("没有mp3资源，无法播放");
+    },
   },
 
   // watch: {

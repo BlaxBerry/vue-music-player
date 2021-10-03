@@ -1,27 +1,22 @@
 ## vue-music-player 2.0
 
-**SPA** Music Player Applicaton
+SPA Music Player Applicaton for personal use only
 
-for personal use only
-
-### Tech Stacks
-- Vue
-- Vue-Cli
-- Vuetify
-- Scss
-- Vue-Router
-- Vuex
-- Axios
+- rewrote by Vue2 + Vuetify2
+- modified design
+- add Dark Theme
+- modifyied responsive layout on Mobile
 
 ---
 
-### Functions
-- Search page Tab 
-    - song list
-    - song sheets
-        -> sheet Detail
-    - mv list
-
+### Tech Stacks
+- Vue2
+- Vue-Cli3
+- Vuetify2
+- Scss
+- Vue-Router
+- Vuex
+- Vue-Aplayer
 
 ---
 
@@ -29,18 +24,15 @@ for personal use only
 
 **/search**
 
-![](./public/images/search-01.png)
-![](./public/images/search-02.png)
+![](./public/images/search-song-01.png)
+![](./public/images/search-album-01.png)
 
-**/detail**
-![](./public/images/detail-mv.png)
-![](./public/images/detail-sheet.png)
+**/album**
+![](./public/images/album.png)
 
-**Mobile**
-<!-- ![](./public/images/mobile-01.png)
-![](./public/images/mobile-02.png)
-![](./public/images/mobile-03.png) -->
-![](./public/images/mobile-04.png)
+**/favourites**
+![](./public/images/favourite.png)
+
 ---
 
 ### Versions

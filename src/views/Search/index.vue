@@ -33,8 +33,6 @@ export default {
     return {
       tabItems,
       search: {
-        queryKeyword: "",
-        searchKeyword: "Sia",
         searchPage: 1,
         searchType: 1,
       },
@@ -43,7 +41,7 @@ export default {
   methods: {
     searchList() {
       let params = {
-        keywords: this.search.searchKeyword,
+        keywords: this.$route.query.keyword ? this.$route.query.keyword : "Sia",
         type: this.search.searchType,
         limit: 30,
         page: this.search.searchPage,
@@ -55,14 +53,11 @@ export default {
     changSearchTabsType(type) {
       this.search.searchType = type;
       this.searchList();
+      this.$store.commit("saveSearchType", type);
     },
   },
 
   created() {
-    // 1.
-    let keyword = this.$route.query.keyword;
-    this.searchQueryKeyword = keyword ? keyword : "Sia";
-    // 2.
     this.searchList();
   },
 };

@@ -83,7 +83,7 @@ export default {
 
   data() {
     return {
-      searchVal: "Sia",
+      searchVal: "",
       sildeLeftISShow: null,
       historyList: [],
     };
@@ -110,7 +110,7 @@ export default {
       }
       let params = {
         keywords: this.searchVal,
-        type: 1,
+        type: this.$store.state.searchType,
         limit: 30,
         page: 1,
         offset: 0,
