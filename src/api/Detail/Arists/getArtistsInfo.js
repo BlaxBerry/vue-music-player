@@ -1,9 +1,11 @@
 import instance from '../../request'
 
-/*  id  */  
+/*  id  */
 
-export const GetArtistInfo = (params) => instance({
+const GetArtistInfo = (params) => instance({
     method: 'GET',
     url: '/artists',
     params
 })
+
+export default GetArtistInfo

@@ -1,9 +1,11 @@
 import instance from '../../request'
 
-/*  mvid  */  
+/*  mvid  */
 
-export const GetMVDetail = (params) => instance({
+const GetMVDetail = (params) => instance({
     method: 'GET',
     url: '/mv/detail',
     params
 })
+
+export default GetMVDetail

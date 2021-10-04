@@ -22,12 +22,12 @@
                 color="black"
                 class="justify-start justify-sm-center align-end align-sm-center"
               >
-                <h4 class="pa-2 font-weight-black">
+                <h4 class="d-sm-none pa-2 font-weight-black">
                   {{ item.name }}
                 </h4>
                 <v-btn
                   rounded
-                  class="d-sm-none red darken-2"
+                  class="red darken-2"
                   @click="goDetail(item.id)"
                 >
                   Check More

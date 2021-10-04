@@ -26,9 +26,14 @@ SPA Music Player Applicaton for personal use only
 
 ![](./public/images/search-song-01.png)
 ![](./public/images/search-album-01.png)
+![](./public/images/search-mv-01.png)
+![](./public/images/search-mv-02.png)
 
 **/album**
 ![](./public/images/album.png)
+
+**/mv**
+![](./public/images/mv.png)
 
 **/favourites**
 ![](./public/images/favourite.png)

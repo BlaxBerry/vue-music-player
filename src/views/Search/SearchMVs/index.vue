@@ -1,11 +1,18 @@
 <template>
   <div>
-    {{ $store.state.searchResult.count }}
+    <!-- {{ $store.state.searchResult.count }} -->
+    <!-- card list -->
+    <List id="common-scrollContent" />
   </div>
 </template>
 
 <script>
-export default {};
+// components
+import List from "./SearchMVList.vue";
+
+export default {
+  components: { List },
+};
 </script>
 
 <style></style>

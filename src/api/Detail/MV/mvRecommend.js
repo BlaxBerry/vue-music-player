@@ -2,8 +2,10 @@ import instance from '../../request'
 
 /*  mvid  */
 
-export const GetMVRecommend = (params) => instance({
+const GetMVRecommend = (params) => instance({
     method: 'GET',
     url: '/simi/mv',
     params
 })
+
+export default GetMVRecommend

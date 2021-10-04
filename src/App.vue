@@ -10,14 +10,21 @@
     <!-- main -->
     <v-main>
       <v-container fluid class="pa-0">
-        <router-view style="padding-bottom:70px"></router-view>
-        <MaskRight style="z-index:99"/>
-        <!-- player -->
-        <v-footer app style="z-index:10">
-          <Player/>
-        </v-footer>
+        <router-view
+          :style="
+            $store.getters.songSelected.url
+              ? 'padding-bottom:70px'
+              : 'padding-bottom:0'
+          "
+        ></router-view>
+        <MaskRight style="z-index:99" />
       </v-container>
     </v-main>
+
+    <!-- player -->
+    <v-footer app style="z-index:10">
+      <Player />
+    </v-footer>
   </v-app>
 </template>
 
