@@ -5,52 +5,130 @@
       <v-tab
         v-for="tab in tabItems"
         :key="tab.searchType"
-        @click="changSearchTabsType(tab.searchType)"
+        @click="changSearchTabsType(tab.type)"
         class="common-tabs"
       >
         {{ tab.name }}
       </v-tab>
 
       <!-- content -->
-      <v-tab-item> hello {{ search.searchType }} </v-tab-item>
-      <v-tab-item> hello {{ search.searchType }} </v-tab-item>
-      <v-tab-item> hello {{ search.searchType }} </v-tab-item>
-      <v-tab-item> hello {{ search.searchType }} </v-tab-item>
+      <v-tab-item v-for="tab in tabItems" :key="tab.searchType">
+        <v-list dense class="pt-0" v-if="searchList.length">
+          <v-list-item
+            v-for="item in searchList"
+            :key="item.id"
+            class="mb-2"
+            @click="playSong(item)"
+          >
+            <!-- pic -->
+            <v-list-item-avatar size="100" tile>
+              <img :src="item.album.picUrl" />
+            </v-list-item-avatar>
+            <!--detail -->
+            <v-list-item-content class="pt-4">
+              <!-- name -->
+              <v-list-item-title
+                class="text-body-1 text-md-h6 font-weight-black"
+                v-html="item.name"
+              />
+              <!-- album name  -->
+              <v-list-item-subtitle
+                class="text-caption text-md-body-1 py-1"
+                v-html="item.album.company"
+              />
+              <!-- artists name -->
+              <v-list-item-subtitle>
+                <span
+                  v-for="a in item.artists"
+                  :key="a.id"
+                  class="text-body-2 text-md-body-1 red--text text--darken-2 mr-3"
+                  v-html="a.name"
+                />
+              </v-list-item-subtitle>
+              <!-- tools -->
+              <div class="d-flex align-center justify-space-between mt-1">
+                <!-- btns -->
+                <div>
+                  <v-btn elevation="0" fab x-small @click="addToFavourite">
+                    <v-icon dark color="pink">mdi-heart</v-icon>
+                  </v-btn>
+                  <v-btn
+                    elevation="0"
+                    fab
+                    x-small
+                    class="mx-2"
+                    v-if="item.mvid"
+                    @click="goCheckMV(item.mvid)"
+                  >
+                    <v-icon dark color="primary">mdi-movie-open</v-icon>
+                  </v-btn>
+                  <v-chip dark color="yellow darken-2" v-if="item.fee == 1">
+                    MVP
+                  </v-chip>
+                </div>
+                <!-- times -->
+                <!-- <span class="font-weight-black" v-if="item.fee !== 1">
+                  {{ item.duration | timeFormat }}
+                </span>
+                <span class="font-weight-black" v-else>00:30</span> -->
+              </div>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+
+        <!-- empty -->
+        <Empty v-else />
+      </v-tab-item>
+
+      <!-- <v-tab-item> hello {{ searchType }} </v-tab-item>
+      <v-tab-item> hello {{ searchType }} </v-tab-item>
+      <v-tab-item> hello {{ searchType }} </v-tab-item> -->
     </v-tabs>
   </div>
 </template>
 
 <script>
 // tab items
-import { tabItems } from "../../assets/data/Tabs/SongTabItems";
+import { tabItems } from "@/assets/data/Tabs/SongTabItems";
+// api
+import GetSongs from "@/api/Songs/GetSongs";
+// components
+import Empty from "@/components/Empty/index.vue";
 
 export default {
+  components: { Empty },
   data() {
     return {
       tabItems,
-      search: {
-        searchType: 1,
-      },
+      searchType: 96, //default 欧美
+      searchList: [],
     };
   },
+
   methods: {
-    searchList() {
-      let params = {
-        keywords: this.search.searchKeyword,
-        type: this.search.searchType,
-        limit: 30,
-        page: this.search.searchPage,
-        offset: (this.search.searchPage - 1) * 30,
-      };
-      this.$store.dispatch("search", params);
+    async search() {
+      // this.$store.dispatch("search", params);
+      let { data } = await GetSongs({ type: this.searchType });
+      console.log(data);
+      this.searchList = data;
     },
 
     changSearchTabsType(type) {
-      this.search.searchType = type;
-      this.searchList();
+      this.searchType = type;
+      this.searchList = [];
+      this.search();
+      console.log(this.searchType);
     },
+
+    playSong(item) {
+      console.log(item);
+    },
+    addToFavourite() {},
+  },
+
+  created() {
+    this.search();
   },
 };
 </script>
 
-<style></style>

@@ -1,6 +1,6 @@
 <template>
   <aplayer
-    v-if="songSelected.url"
+    v-if="songSelected.name&&$route.path!='/mv'"
     class="px-md-6 px-lg-10"
     :music="{
       title: songSelected.name,

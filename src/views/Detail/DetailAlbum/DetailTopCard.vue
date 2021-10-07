@@ -12,11 +12,10 @@
     <div class="d-flex">
       <!-- left pic -->
       <div class="d-none d-sm-flex">
-        <img :src="info.pic" style="width:200px" />
+        <img :src="info.pic" style="width:200px;height:200px" />
       </div>
       <!-- right info -->
       <div class="text-overline px-sm-4">
-
         <!-- count -->
         <p class="mb-0 d-none d-sm-flex">
           <span class="mr-10">playCoun: {{ info.playCount }}</span>
@@ -54,7 +53,7 @@
             color="primary"
             @click="showMoreDetail = !showMoreDetail"
           >
-            查看更多
+            {{ showMoreDetail ? "收起" : "查看更多" }}
           </v-btn>
         </p>
       </div>

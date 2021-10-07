@@ -4,7 +4,7 @@
       <v-col cols="12" sm="7" id="common-scrollContent">
         <LeftList />
       </v-col>
-      <v-col class="d-none d-sm-flex" cols="5">
+      <v-col class="d-none d-sm-flex justify-center" cols="5">
         <RightDetail />
       </v-col>
     </v-row>

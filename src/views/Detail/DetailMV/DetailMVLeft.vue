@@ -1,12 +1,27 @@
 <template>
   <v-sheet v-if="detail" class="px-4">
-    <!-- 1. name -->
-    <v-card-title class="font-weight-black pb-0">
-      {{ detail.name }}
+    <!-- name -->
+    <v-card-title class="pb-0">
+      {{ detail.name }} &nbsp;
+      <span
+        v-for="a in detail.artists"
+        :key="a.id"
+        class="red--text text--darken-2 text-body-1 font-weight-black"
+      >
+        {{ a.name }}
+      </span>
     </v-card-title>
 
-    <!-- 2. video -->
-    <!-- <img :src="detail.cover" alt="" /> -->
+    <!-- count -->
+    <p
+      v-if="detail"
+      class="red--text text--darken-2 text-caption pl-4 font-weight-black"
+    >
+      <span class="mr-4"> 发布时间: {{ detail.publishTime }} </span>
+      <span> 播放次数: {{ detail.playCount }} </span>
+    </p>
+
+    <!-- video -->
     <video
       :src="url"
       :poster="detail.cover"
@@ -14,35 +29,28 @@
       style="width:100%"
     ></video>
 
-    <!-- artist -->
-    <span
-      v-for="a in detail.artists"
-      :key="a.id"
-      class="pl-4 red--text text--darken-2 font-weight-black"
-    >
-      {{ a.name }}
-    </span>
-    <!-- <v-tabs color="red darken-2">
-      <v-tab v-for="a in detail.artists" :key="a.id">{{ a.name }} </v-tab>
-      <v-tab-item class="pa-4" v-for="a in detail.artists" :key="a.id">
-        <div>
-          {{ a.name }}
-        </div>
-      </v-tab-item>
-    </v-tabs> -->
-
-    <!-- count -->
-    <div v-if="detail" class="text-caption pl-4 font-weight-black">
-      <span class="mr-4"> 发布时间: {{ detail.publishTime }} </span>
-      <span> 播放次数: {{ detail.playCount }} </span>
+    <!-- desc -->
+    <div class="pa-2 pa-sm-4 text-caption text-body-2">
+      <p>{{ detail.briefDesc }}</p>
+      <p>{{ detail.desc }}</p>
     </div>
 
+    <!-- artist -->
+    <!-- <p>
+      <span
+        v-for="a in detail.artists"
+        :key="a.id"
+        class="pl-4 red--text text--darken-2 font-weight-black"
+      >
+        {{ a.name }}
+      </span>
+    </p> -->
+
     <!-- comments -->
-    <div class="d-none d-sm-block">
+    <!-- <div class="d-none d-sm-block" v-if="detail">
       <v-card-title class="pb-2">评论</v-card-title>
       <v-list three-line id="common-scrollContent" class="pt-0">
         <v-list-item v-for="item in comments.hotComments" :key="item.id">
-          <!-- pic -->
           <v-list-item-avatar>
             <v-img
               :lazy-src="require('../../../assets/images/logo.png')"
@@ -59,7 +67,7 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
-    </div>
+    </div> -->
   </v-sheet>
 </template>
 
@@ -89,6 +97,6 @@ export default {
 
 <style lang="scss" scoped>
 #common-scrollContent {
-  height: 50vh !important;
+  height: 20vh !important;
 }
 </style>

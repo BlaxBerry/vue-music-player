@@ -1,5 +1,5 @@
 <template>
-  <v-sheet>
+  <v-sheet style="padding-bottom:0px">
     <v-row class="pt-3">
       <!-- left video-->
       <v-col cols="12" sm="8" class="px-sm-0 py-0">
@@ -71,6 +71,7 @@ export default {
         publishTime,
         videoGroup,
       };
+      console.log(this.details);
     },
     // get comments
     async getComments() {
@@ -84,7 +85,6 @@ export default {
     // get recommend video list
     async getVideoList() {
       let { mvs } = await getMVRecommend({ mvid: this.$route.query.id });
-      console.log(mvs);
       this.videoList = mvs;
     },
   },

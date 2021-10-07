@@ -1,7 +1,7 @@
 // ssong view's tabs
 export const tabItems = [
-    { name: "欧美", searchType: 1 },
-    { name: "韩国", searchType: 1000 },
-    { name: "日本", searchType: 1004 },
-    { name: "华语", searchType: 104 },
+    { name: "欧美", type: 96 },
+    { name: "韩国", type: 16 },
+    { name: "日本", type: 8 },
+    { name: "华语", type: 7 },
 ]
