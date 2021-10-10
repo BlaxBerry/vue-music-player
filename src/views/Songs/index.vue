@@ -13,7 +13,12 @@
 
       <!-- content -->
       <v-tab-item v-for="tab in tabItems" :key="tab.searchType">
-        <v-list dense class="pt-0" v-if="searchList.length">
+        <v-list
+          dense
+          class="pt-0"
+          v-if="searchList.length"
+          id="common-scrollContent"
+        >
           <v-list-item
             v-for="item in searchList"
             :key="item.id"
@@ -56,13 +61,19 @@
                     elevation="0"
                     fab
                     x-small
-                    class="mx-2"
+                    class="ml-2"
                     v-if="item.mvid"
                     @click="goCheckMV(item.mvid)"
                   >
                     <v-icon dark color="primary">mdi-movie-open</v-icon>
                   </v-btn>
-                  <v-chip dark color="yellow darken-2" v-if="item.fee == 1">
+                  <v-chip
+                    small
+                    dark
+                    color="yellow darken-2"
+                    class="ml-2"
+                    v-if="item.fee == 1"
+                  >
                     MVP
                   </v-chip>
                 </div>
@@ -92,6 +103,7 @@
 import { tabItems } from "@/assets/data/Tabs/SongTabItems";
 // api
 import GetSongs from "@/api/Songs/GetSongs";
+import GetURL from "@/api/Detail/Song/getSongURL";
 // components
 import Empty from "@/components/Empty/index.vue";
 
@@ -107,9 +119,7 @@ export default {
 
   methods: {
     async search() {
-      // this.$store.dispatch("search", params);
       let { data } = await GetSongs({ type: this.searchType });
-      console.log(data);
       this.searchList = data;
     },
 
@@ -117,13 +127,36 @@ export default {
       this.searchType = type;
       this.searchList = [];
       this.search();
-      console.log(this.searchType);
     },
 
-    playSong(item) {
-      console.log(item);
+    async playSong(song) {
+      // 1. format obj
+      let { name, id } = song;
+      let pic = song.album.picUrl;
+      let album = {
+        name: song.album.name,
+        id: song.album.id,
+        publishTime: song.album.publishTime,
+      };
+      let artists = song.artists.map((e) => {
+        return {
+          name: e.name,
+          id: e.id,
+        };
+      });
+      let { data } = await GetURL({ id });
+      let url = data[0].url;
+      let fee = song.fee == 1 ? true : false;
+      let duration = song.fee == 1 ? "00:30" : song.duration;
+      let params = { name, id, pic, url, duration, album, artists, fee };
+
+      // 2. save obj selected in vuex
+      this.$store.commit("saveSongSelected", params);
     },
     addToFavourite() {},
+    goCheckMV(mvid) {
+      this.$router.push("/mv?id=" + mvid);
+    },
   },
 
   created() {
@@ -131,4 +164,3 @@ export default {
   },
 };
 </script>
-

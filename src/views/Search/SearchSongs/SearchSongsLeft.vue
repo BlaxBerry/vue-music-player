@@ -44,13 +44,19 @@
                 elevation="0"
                 fab
                 x-small
-                class="mx-2"
+                class="ml-2"
                 v-if="item.mvid"
                 @click="goCheckMV(item.mvid)"
               >
                 <v-icon dark color="primary">mdi-movie-open</v-icon>
               </v-btn>
-              <v-chip dark color="yellow darken-2" v-if="item.fee == 1">
+              <v-chip
+                small
+                dark
+                color="yellow darken-2"
+                class="ml-2"
+                v-if="item.fee == 1"
+              >
                 MVP
               </v-chip>
             </div>

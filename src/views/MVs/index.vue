@@ -42,8 +42,8 @@ export default {
     return {
       searchOptionItems,
       search: {
-        area: "全部",
-        type: "全部",
+        area: "欧美",
+        type: "官方版",
         order: "上升最快",
         page: 1,
         list: [],
